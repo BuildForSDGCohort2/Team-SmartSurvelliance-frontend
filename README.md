@@ -1,1 +1,3 @@
 # Team-SmartSurvelliance-frontend
+This is a Mobile/Web application that is used to receive live video feed of the storefront with picture notification of when an intruder comes to close to your storefront. The user is required to login to view all of theses features for security reasons.
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/bff5fd73230d4085b848cc2ceae08a1f)](https://app.codacy.com/gh/BuildForSDGCohort2/Team-SmartSurvelliance-frontend?utm_source=github.com&utm_medium=referral&utm_content=BuildForSDGCohort2/Team-SmartSurvelliance-frontend&utm_campaign=Badge_Grade_Settings)
