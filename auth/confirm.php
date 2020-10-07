@@ -38,7 +38,7 @@
                                     <div id="errorAlert" style="color: #fff;width:100%;display: none;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-danger errorAlert" role="alert">
                                         Incorrect password!! try again.
                                     </div>
-                                    <p style='color: red;'><?php echo $error;?></p> 
+                                    <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p>  
                                     <h5 class="card-title">Confirm Sign Up</h5>
                                     <form method="POST" id="login_form" >
 

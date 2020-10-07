@@ -6,7 +6,7 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
-    
+
     $entercode = false;
 
 	if(isset($_POST['action'])) {
@@ -53,9 +53,9 @@
                                     <div id="errorAlert" style="color: #fff;width:100%;display: none;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-danger errorAlert" role="alert">
                                         Incorrect password!! try again.
                                     </div>
-                                    <p style='color: red;'><?php echo $error;?></p> 
+                                    <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
                                     <h5 class="card-title">Forgot Password</h5>
-                                    <p class="btn-text-secondary">If your account was found, an e-mail has been sent to the associated e-mailadres. Enter the code and your new password.</p>
+                                    <p class="text-secondary">If your account was found, an e-mail has been sent to the associated e-mailadres. Enter the code and your new password.</p>
                                     <form method="POST" id="forgot_password_form" >
 
                                         <div class="form-group">
@@ -76,7 +76,7 @@
                                                 <span class="spinner-border spinner-border-sm" role="status"></span>
                                                 Loading...
                                             </button>
-                                            <!-- <a class="btn btn-text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
+                                            <!-- <a class="btn text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
                                         </div>
                                     </form>
                                 </div>
@@ -98,9 +98,9 @@
                                     <div id="errorAlert" style="color: #fff;width:100%;display: none;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-danger errorAlert" role="alert">
                                         Incorrect password!! try again.
                                     </div>
-                                    <p style='color: red;'><?php echo $error;?></p> 
+                                    <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
                                     <h5 class="card-title">Forgot Password</h5>
-                                    <p class="btn-text-secondary">Enter your username and we will send you a reset code to your email address.</p>
+                                    <p class="text-secondary">Enter your username and we will send you a reset code to your email address.</p>
                                     <form method="POST" id="forgot_password_form" >
 
                                         <div class="form-group">
@@ -117,7 +117,7 @@
                                                 <span class="spinner-border spinner-border-sm" role="status"></span>
                                                 Loading...
                                             </button>
-                                            <!-- <a class="btn btn-text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
+                                            <!-- <a class="btn text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
                                         </div>
                                     </form>
                                 </div>
