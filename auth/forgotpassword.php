@@ -6,7 +6,6 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
-    // $error = '';
 
     $entercode = false;
 
@@ -32,7 +31,7 @@
 
 	        // TODO: show message on new page that password has been reset
 	        if(empty($error)) {
-	            header('Location: login.php?status=true&message=password was reset successfully.');
+	            header('Location: login.php?reset');
 	        }
 	    }
 	}

@@ -10,7 +10,6 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
-    $error = '';
 
     if(isset($_POST['action'])) {
 
@@ -31,6 +30,11 @@
         }
     }
 
+    $message = '';
+    if(isset($_GET['reset'])) {
+        $message = 'Your password has been reset. Login with your new password';
+    }
+
 ?>
 <?php require_once './partials/auth.header.inc.php'; ?>
         
@@ -41,9 +45,9 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card login-box">
                                 <div class="card-body">
-                                    <?php if ($_GET['message']): ?>
+                                    <?php if (isset($message)): ?>
                                         <div id="errorAlert" style="color: #fff;width:100%;display: block;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-success errorAlert" role="alert">
-                                            <?= ucfirst($_GET['message']); ?>
+                                            <?= ucfirst($message); ?>
                                         </div>
                                     <?php endif ?>
                                     <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
