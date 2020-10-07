@@ -18,16 +18,16 @@
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
         if($_POST['action'] === 'login') {
-            // $error = $wrapper->authenticate($username, $password);
+            $error = $wrapper->authenticate($username, $password);
 
-            // if(empty($error)) {
-            //     $_SESSION['username'] = $username;
-            //     header('Location: dashboard.php');
-            //     exit;
-            // }
-            $_SESSION['username'] = $username;
-            header('Location: ../dashboard.php');
-            exit;
+            if(empty($error)) {
+                $_SESSION['username'] = $username;
+                header('Location: dashboard.php');
+                exit;
+            }
+            // $_SESSION['username'] = $username;
+            // header('Location: ../dashboard.php');
+            // exit;
         }
     }
 

@@ -14,6 +14,12 @@ if(!$wrapper->isAuthenticated()) {
 $user = $wrapper->getUser();
 $pool = $wrapper->getPoolMetadata();
 $users = $wrapper->getPoolUsers();
+print_r($user);
+echo = "<br>";
+print_r($pool);
+echo = "<br>";
+print_r($users);
+echo = "<br>";
 ?>
 
 <!doctype html>

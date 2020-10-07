@@ -55,7 +55,7 @@
                                     </div>
                                     <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
                                     <h5 class="card-title">Forgot Password</h5>
-                                    <p class="text-secondary">If your account was found, an e-mail has been sent to the associated e-mailadres. Enter the code and your new password.</p>
+                                    <i style="font-size: 13px;color: #f5f5f5;" class="text-muted">If your account was found, an email has been sent to the associated email address. Enter the code and your new password.</i>
                                     <form method="POST" id="forgot_password_form" >
 
                                         <div class="form-group">
@@ -76,7 +76,7 @@
                                                 <span class="spinner-border spinner-border-sm" role="status"></span>
                                                 Loading...
                                             </button>
-                                            <!-- <a class="btn text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
+                                            <!-- <a class="btn text-muted float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
                                         </div>
                                     </form>
                                 </div>
@@ -100,7 +100,7 @@
                                     </div>
                                     <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
                                     <h5 class="card-title">Forgot Password</h5>
-                                    <p class="text-secondary">Enter your username and we will send you a reset code to your email address.</p>
+                                    <i style="font-size: 13px;color: #f5f5f5;" class="text-muted">Enter your username and we will send you a reset code to your email address.</i>
                                     <form method="POST" id="forgot_password_form" >
 
                                         <div class="form-group">
@@ -117,7 +117,7 @@
                                                 <span class="spinner-border spinner-border-sm" role="status"></span>
                                                 Loading...
                                             </button>
-                                            <!-- <a class="btn text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
+                                            <!-- <a class="btn text-muted float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i> -->
                                         </div>
                                     </form>
                                 </div>
