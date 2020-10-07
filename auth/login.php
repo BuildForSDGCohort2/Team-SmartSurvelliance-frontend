@@ -1,6 +1,6 @@
 <?php ob_start();
     // session_start();
-    if(isset($_SESSION['user'])) {
+    if(isset($_SESSION['username'])) {
         header("Location: ../dashboard.php");
     }
 

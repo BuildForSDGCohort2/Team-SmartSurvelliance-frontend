@@ -25,7 +25,7 @@
 
 	        $code = htmlspecialchars(strip_tags($_POST['code']));
 	        $password = htmlspecialchars(strip_tags($_POST['password']));
-	        $username = htmlspecialchars(strip_tags($_POST['username']));
+	        $username = htmlspecialchars(strip_tags($_GET['username']));
 
 	        $error = $wrapper->resetPassword($code, $password, $username);
 
@@ -69,7 +69,6 @@
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                                         </div>
                                         
-                                        <input type='hidden' name="username" id="username"/>
                                         <input type='hidden' name='action' value='reset' />
 
                                         <div class="form-group">
