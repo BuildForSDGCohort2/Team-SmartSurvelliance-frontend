@@ -22,7 +22,7 @@
 
             if(empty($error)) {
                 $_SESSION['username'] = $username;
-                header('Location: dashboard.php');
+                header('Location: ../secure.php');
                 exit;
             }
             // $_SESSION['username'] = $username;
