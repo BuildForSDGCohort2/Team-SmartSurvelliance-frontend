@@ -21,7 +21,7 @@
     }
 
     $user = $wrapper->getUser();
-    $_SESSION['username'] = $user->get('Username');
+   
 
     
     // if(!isset($_SESSION['username'])) {

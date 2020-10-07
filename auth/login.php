@@ -1,5 +1,5 @@
 <?php ob_start();
-    // session_start();
+    session_start();
     if(isset($_SESSION['username'])) {
         header("Location: ../dashboard.php");
     }
@@ -20,7 +20,8 @@
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
-                // $_SESSION['username'] = $username;
+                $user = $wrapper->getUser();
+                $_SESSION['username'] = $user->get('Username');
                 header('Location: ../dashboard.php');
                 exit;
             }
