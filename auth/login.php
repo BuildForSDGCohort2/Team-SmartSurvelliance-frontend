@@ -18,12 +18,16 @@
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
         if($_POST['action'] === 'login') {
-            $error = $wrapper->authenticate($username, $password);
+            // $error = $wrapper->authenticate($username, $password);
 
-            if(empty($error)) {
-                header('Location: secure.php');
-                exit;
-            }
+            // if(empty($error)) {
+            //     $_SESSION['username'] = $username;
+            //     header('Location: dashboard.php');
+            //     exit;
+            // }
+            $_SESSION['username'] = $username;
+            header('Location: ../dashboard.php');
+            exit;
         }
     }
 
@@ -61,6 +65,7 @@
                                                 <span class="spinner-border spinner-border-sm" role="status"></span>
                                                 Loading...
                                             </button>
+                                            <a style="font-size: 9px;width: 120px;font-weight: bolder;" class="btn btn-text-secondary float-left m-r-sm" href="forgotpassword.php"><b>Forgot Password</b></a></i>
                                             <a class="btn btn-text-secondary float-right m-r-sm" href="signup.php"><b>Sign up</b></a></i>
                                         </div>
                                     </form>

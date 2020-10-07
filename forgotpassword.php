@@ -1,10 +1,10 @@
 <?php
-require '../vendor/autoload.php';
+// require '../vendor/autoload.php';
 
-use AWSCognitoApp\AWSCognitoWrapper;
+// use AWSCognitoApp\AWSCognitoWrapper;
 
-$wrapper = new AWSCognitoWrapper();
-$wrapper->initialize();
+// $wrapper = new AWSCognitoWrapper();
+// $wrapper->initialize();
 
 $entercode = false;
 
@@ -38,6 +38,7 @@ if(isset($_POST['action'])) {
 if(isset($_GET['username'])) {
     $entercode = true;
 }
+
 ?>
 
 <!doctype html>
@@ -57,7 +58,7 @@ if(isset($_GET['username'])) {
             <li><a href='/forgotpassword.php'>Forgotten password</a></li>
             <li><a href='/logout.php'>Logout</a></li>
         </ul>
-        <p style='color: red;'><?php echo $error;?></p>
+        <!-- <p style='color: red;'><?php echo $error;?></p> -->
         <?php if($entercode) { ?>
         <h1>Reset password</h1>
         <p>If your account was found, an e-mail has been sent to the associated e-mailadres. Enter the code and your new password.</p>

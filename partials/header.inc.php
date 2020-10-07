@@ -1,5 +1,5 @@
 <?php session_start();
-
+    session_destroy();
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
     // $config = require './api/config/core.php';
@@ -11,15 +11,12 @@
     use Aws\CognitoIdentity\CognitoIdentityClient;
      
     
-    // if(!isset($_SESSION['id'])) {
-    //     header("Location: ./auth/login.php");
-    // }else if(isset($_SESSION['id'])) {
-    //     $firstname = ucfirst($_SESSION['firstname']);
-    //     $lastname = ucfirst($_SESSION['lastname']);
-    //     $fullname = $firstname ." ".$lastname;
-    //     $email = $_SESSION['email'];
-    // }
-    // session_destroy();
+    if(!isset($_SESSION['username'])) {
+        header("Location: ./auth/login.php");
+    }else if(isset($_SESSION['username'])) {
+        $username = ucfirst($_SESSION['username']);
+    }
+    
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
 
@@ -132,7 +129,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $firstname; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $_SESSION['username']; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

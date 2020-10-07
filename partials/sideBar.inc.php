@@ -1,9 +1,6 @@
 <?php 
-    if(isset($_SESSION['id'])) {
-        $firstname = ucfirst($_SESSION['firstname']);
-        $lastname = ucfirst($_SESSION['lastname']);
-        $fullname = $firstname ." ".$lastname;
-        $email = $_SESSION['email'];
+    if(isset($_SESSION['username'])) {
+        $username = ucfirst($_SESSION['username']);
     }
 ?>
 <div class="page-sidebar">
@@ -14,9 +11,9 @@
             </div>
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">
-                    <?php if ($_SESSION['id'] && $_SESSION['email']): ?>
-                        <p><?= $fullname; ?></p>
-                        <span><?= $email; ?><i class="material-icons float-right">arrow_drop_down</i></span>
+                    <?php if ($_SESSION['username']): ?>
+                        <p><?= $username; ?></p>
+                        <!-- <span><?= $username; ?><i class="material-icons float-right">arrow_drop_down</i></span> -->
                     <?php endif ?>
                 </a>
             </div>
@@ -47,7 +44,7 @@
                     <li>
                         <a href="mailbox.php" class="waves-effect waves-grey">
                             <i class="material-icons">email</i>Messages
-                            <span style="border-radius: 50%;background-color: #ff8f00;color: #fff;" class="badge badge-danger"><?php if ($messageNum) { echo $messageNum; } ?></span>
+                            <span style="border-radius: 50%;background-color: #ff8f00;color: #fff;" class="badge badge-danger">1</span>
                         </a>
                     </li>
                     <li>
