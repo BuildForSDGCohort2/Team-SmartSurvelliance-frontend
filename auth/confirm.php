@@ -16,8 +16,8 @@
 	    	$confirmation = htmlspecialchars(strip_tags($_POST['confirmation']));
 	    	// var_dump($_GET['username']);
 	    	// var_dump($_POST['confirmation']);
-		    // $error = $wrapper->confirmSignup($username, $confirmation);
-		    $error = "";
+		    $error = $wrapper->confirmSignup($username, $confirmation);
+		    // $error = "";
 		    if(empty($error)) {
 		        header('Location: ../dashboard.php');
 		    }
