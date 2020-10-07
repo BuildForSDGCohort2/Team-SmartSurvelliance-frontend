@@ -3,8 +3,8 @@ namespace AWSCognitoApp;
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 putenv('CLIENT_ID=73nkbeiki4s2q5c2v9v8ek4aue');
 putenv('USERPOOL_ID=us-east-1_yXMlljTfq');
-putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIOGEBEMYR');
-putenv('AWS_SECRET_ACCESS_KEY=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');
+putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIFFNLSWMP');
+putenv('AWS_SECRET_ACCESS_KEY=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');
 putenv('REGION=us-east-1');
 putenv('VERSION=latest');
 
