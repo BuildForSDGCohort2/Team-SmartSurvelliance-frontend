@@ -1,10 +1,8 @@
 <?php session_start();
 
     require_once 'functions.inc.php';
-    require_once './api/config/database.php';
-    require_once './api/objects/contact.php';
     require './vendor/autoload.php';
-    $config = require './api/config/core.php';
+    // $config = require './api/config/core.php';
 
     // AWS API client
     use Aws\S3\S3Client;
@@ -12,40 +10,30 @@
     use Twilio\Rest\Client;
     use Aws\CognitoIdentity\CognitoIdentityClient;
      
-    // get database connection
-    $database = new Database();
-    $db = $database->connect();
-    // prepare contact object
-    $contact = new Contact($db);
-    // query contact
-    $stmt = $contact->countMessages();
-    $messageNum = count($stmt);
-    // check if more than 0 record found
-    // echo $messageNum;
     
-    if(!isset($_SESSION['id'])) {
-        header("Location: ./auth/login.php");
-    }else if(isset($_SESSION['id'])) {
-        $firstname = ucfirst($_SESSION['firstname']);
-        $lastname = ucfirst($_SESSION['lastname']);
-        $fullname = $firstname ." ".$lastname;
-        $email = $_SESSION['email'];
-    }
+    // if(!isset($_SESSION['id'])) {
+    //     header("Location: ./auth/login.php");
+    // }else if(isset($_SESSION['id'])) {
+    //     $firstname = ucfirst($_SESSION['firstname']);
+    //     $lastname = ucfirst($_SESSION['lastname']);
+    //     $fullname = $firstname ." ".$lastname;
+    //     $email = $_SESSION['email'];
+    // }
     // session_destroy();
     // S3 CONFIG SETTINGS
-    $bucket = $config['s3']['BUCKET'];
+    // $bucket = $config['s3']['BUCKET'];
 
-    $client = new S3Client([
-        'version' => $config['s3']['VERSION'],
-        'region' => $config['s3']['REGION'],
-        'credentials' => [
-            'key' => $config['s3']['KEY'],
-            'secret' => $config['s3']['SECRET']
-        ]
-    ]);
+    // $client = new S3Client([
+    //     'version' => $config['s3']['VERSION'],
+    //     'region' => $config['s3']['REGION'],
+    //     'credentials' => [
+    //         'key' => $config['s3']['KEY'],
+    //         'secret' => $config['s3']['SECRET']
+    //     ]
+    // ]);
 
-    // Twilio client instance
-    $twilioClient = new Client($config['twilio']['SID'], $config['twilio']['TOKEN']);
+    // // Twilio client instance
+    // $twilioClient = new Client($config['twilio']['SID'], $config['twilio']['TOKEN']);
 
     // Cognito client instance
     // $aws = new \Aws\Sdk($config);
@@ -162,7 +150,7 @@
                             <li class="nav-item dropdown d-none d-lg-block">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications_none</i>
-                                    <span class="badge"><?php if ($messageNum) { echo $messageNum; } ?></span>
+                                    <span class="badge">1</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right dd-notifications" aria-labelledby="navbarDropdown">
                                     <li class="notification-drop-title">Today</li>

@@ -16,7 +16,7 @@ Twilio for sms notification.
 -AWS Services
 1. AWS Cognito for User authentication
 2. AWS S3 to host Images and Video streams
-3. AWS Cloudfront to stream Video feeds from s3 in the mobile device
+3. AWS Cloudfront to stream Video feeds from s3 in the web device
 
 -Installation
 Clone repository
