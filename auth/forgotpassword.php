@@ -31,7 +31,7 @@
 
 	        // TODO: show message on new page that password has been reset
 	        if(empty($error)) {
-	            header('Location: login.php?reset');
+	            header('Location: login.php?reset=true');
 	        }
 	    }
 	}
