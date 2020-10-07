@@ -41,7 +41,7 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card login-box">
                                 <div class="card-body">
-                                    <?php if (isset($_GET['message'])): ?>
+                                    <?php if ($_GET['message']): ?>
                                         <div id="errorAlert" style="color: #fff;width:100%;display: block;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-success errorAlert" role="alert">
                                             <?= ucfirst($_GET['message']); ?>
                                         </div>

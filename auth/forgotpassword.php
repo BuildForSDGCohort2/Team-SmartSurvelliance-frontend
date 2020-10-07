@@ -6,6 +6,7 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
+    // $error = '';
 
     $entercode = false;
 
@@ -42,7 +43,7 @@
 
 
 ?>
-        <?php if($entercode) { echo $entercode; ?>
+        <?php if($entercode) { ?>
 
         <div class="alpha-app">
             <div class="container">
