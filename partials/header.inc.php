@@ -19,6 +19,10 @@
         header('Location: ./auth/login.php');
         exit;
     }
+
+    $user = $wrapper->getUser();
+    $_SESSION['username'] = $user->get('Username');
+
     
     // if(!isset($_SESSION['username'])) {
     //     header("Location: ./auth/login.php");
@@ -26,9 +30,7 @@
     //     $username = ucfirst($_SESSION['username']);
     // }
 
-    $user = $wrapper->getUser();
-    $pool = $wrapper->getPoolMetadata();
-    $users = $wrapper->getPoolUsers();
+
     
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
@@ -245,26 +247,7 @@
                 <h4>Generate Notification with tap on Notification</h4>
                 <a href="#" id="notificationlabel" class="button">Notification</a>
             </div> -->
-            <h1>Secure page</h1>
-        <p>Welcome <strong><?php echo $user->get('Username');?></strong>! You are succesfully authenticated. Some <em>secret</em> information about this user pool:</p>
-
-        <h2>Metadata</h2>
-        <p><b>Id:</b> <?php echo $pool['Id'];?></p>
-        <p><b>Name:</b> <?php echo $pool['Name'];?></p>
-        <p><b>CreationDate:</b> <?php echo $pool['CreationDate'];?></p>
-
-        <h2>Users</h2>
-        <ul>
-        <?php
-        foreach($users as $user) {
-            $email_attribute_index = array_search('email', array_column($user['Attributes'], 'Name'));
-            $email = $user['Attributes'][$email_attribute_index]['Value'];
-
-            echo "<li>{$user['Username']} ({$email})</li>";
-        }
-        ?>
-        </ul>
-
+<?php echo $_SESSION['username']; ?>
             <script>
                 $(document).ready(function() {
                     $('#notificationlabel').click('on', function(e) {
