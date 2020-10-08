@@ -15,12 +15,24 @@
 
         if($_POST['action'] === 'login') {
             // $error = $wrapper->authenticate($username, $password);
-
-            if($wrapper->authenticate($username, $password)) {
-                $_SESSION['username'] = $username;
-                header('Location: ../dashboard.php');
-                exit;
+            try {
+                $result = $this->client->adminInitiateAuth([
+                    'AuthFlow' => 'ADMIN_NO_SRP_AUTH',
+                    'ClientId' => getenv('CLIENT_ID'),
+                    'UserPoolId' => getenv('USERPOOL_ID'),
+                    'AuthParameters' => [
+                        'USERNAME' => $username,
+                        'PASSWORD' => $password,
+                    ],
+                ]);
+            } catch (\Exception $e) {
+                return $e->getMessage();
             }
+
+            $this->setAuthenticationCookie($result->get('AuthenticationResult')['AccessToken']);
+            $_SESSION['username'] = $username;
+            header('Location: ../dashboard.php');
+            exit;
             // $_SESSION['username'] = $username;
             // header('Location: ../dashboard.php');
             // exit;
