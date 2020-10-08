@@ -9,13 +9,17 @@
     // Twilio API Client
     use Twilio\Rest\Client;
     use Aws\CognitoIdentity\CognitoIdentityClient;
-     
     
-    // if(!isset($_SESSION['username'])) {
-    //     header("Location: ./auth/login.php");
-    // }else if(isset($_SESSION['username'])) {
-    //     $username = ucfirst($_SESSION['username']);
-    // }
+    if(!$wrapper->isAuthenticated()) {
+        header('Location: ../auth/login.php');
+        exit;
+    }
+
+    $wrapper = new AWSCognitoWrapper();
+    $wrapper->initialize();
+    $user = $wrapper->getUser();
+    $_SESSION['username'] = $user->get('Username');
+    
     
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
