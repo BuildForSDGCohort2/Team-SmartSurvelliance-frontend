@@ -1,6 +1,6 @@
 <?php ob_start();
     session_start();
-    if(isset($_SESSION['username'])) {
+    if(isset($_SESSION['user'])) {
         header("Location: ../dashboard.php");
     }
 
@@ -10,6 +10,7 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
+    $error = '';
 
     if(isset($_POST['action'])) {
 
@@ -17,23 +18,17 @@
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
         if($_POST['action'] === 'login') {
-            $error = $wrapper->authenticate($username, $password);
+            // $error = $wrapper->authenticate($username, $password);
 
-            if(empty($error)) {
-                $user = $wrapper->getUser();
-                $_SESSION['username'] = $user->get('Username');
-                header('Location: ../dashboard.php');
-                exit;
-            }
-            // $_SESSION['username'] = $username;
-            // header('Location: ../dashboard.php');
-            // exit;
+            // if(empty($error)) {
+            //     $_SESSION['username'] = $username;
+            //     header('Location: dashboard.php');
+            //     exit;
+            // }
+            $_SESSION['username'] = $username;
+            header('Location: ../dashboard.php');
+            exit;
         }
-    }
-
-    $message = '';
-    if(isset($_GET['reset'])) {
-        $message = 'Your password has been reset. Login with your new password';
     }
 
 ?>
@@ -46,11 +41,9 @@
                         <div class="col-lg-4 col-md-6">
                             <div class="card login-box">
                                 <div class="card-body">
-                                    <?php if (isset($_GET['message'])): ?>
-                                        <div id="errorAlert" style="color: #fff;width:100%;display: block;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-success errorAlert" role="alert">
-                                            <?= ucfirst($_GET['message']); ?>
-                                        </div>
-                                    <?php endif ?>
+                                    <div id="errorAlert" style="color: #fff;width:100%;display: none;position: absolute;top: 0;left: 0%;text-align: center;" class="alert alert-danger errorAlert" role="alert">
+                                        Incorrect password!! try again.
+                                    </div>
                                     <p style='color: red;'><?php if (isset($error)) { echo $error; } ?></p> 
                                     <h5 class="card-title">Sign In</h5>
                                     <form method="POST" id="login_form" >
