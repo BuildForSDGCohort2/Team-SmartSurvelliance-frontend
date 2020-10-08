@@ -11,11 +11,11 @@
     use Aws\CognitoIdentity\CognitoIdentityClient;
      
     
-    if(!isset($_SESSION['username'])) {
-        header("Location: ./auth/login.php");
-    }else if(isset($_SESSION['username'])) {
-        $username = ucfirst($_SESSION['username']);
-    }
+    // if(!isset($_SESSION['username'])) {
+    //     header("Location: ./auth/login.php");
+    // }else if(isset($_SESSION['username'])) {
+    //     $username = ucfirst($_SESSION['username']);
+    // }
     
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
