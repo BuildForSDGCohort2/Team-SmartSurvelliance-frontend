@@ -9,6 +9,17 @@
     // Twilio API Client
     use Twilio\Rest\Client;
     use Aws\CognitoIdentity\CognitoIdentityClient;
+    use AWSCognitoApp\AWSCognitoWrapper;
+
+    $wrapper = new AWSCognitoWrapper();
+    $wrapper->initialize();
+
+    if(!$wrapper->isAuthenticated()) {
+        header('Location: ../auth/login.php');
+        exit;
+    }
+
+    $user = $wrapper->getUser();
      
     
     // if(!isset($_SESSION['username'])) {
