@@ -1,8 +1,4 @@
 <?php ob_start();
-    session_start();
-    if(isset($_SESSION['user'])) {
-        header("Location: ../dashboard.php");
-    }
 
     require '../vendor/autoload.php';
 
@@ -14,10 +10,10 @@
 
     if(isset($_POST['action'])) {
 
-        $username = htmlspecialchars(strip_tags($_POST['username']));
-        $password = htmlspecialchars(strip_tags($_POST['password']));
-
         if($_POST['action'] === 'login') {
+            $username = htmlspecialchars(strip_tags($_POST['username']));
+            $password = htmlspecialchars(strip_tags($_POST['password']));
+            
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
