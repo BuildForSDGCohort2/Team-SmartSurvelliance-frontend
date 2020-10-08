@@ -9,17 +9,13 @@
     // Twilio API Client
     use Twilio\Rest\Client;
     use Aws\CognitoIdentity\CognitoIdentityClient;
+     
     
-    if(!$wrapper->isAuthenticated()) {
-        header('Location: ../auth/login.php');
-        exit;
+    if(!isset($_SESSION['username'])) {
+        header("Location: ./auth/login.php");
+    }else if(isset($_SESSION['username'])) {
+        $username = ucfirst($_SESSION['username']);
     }
-
-    $wrapper = new AWSCognitoWrapper();
-    $wrapper->initialize();
-    $user = $wrapper->getUser();
-    // $user = $user->get('Username');
-    
     
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
@@ -133,7 +129,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $user; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $_SESSION['username']; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>

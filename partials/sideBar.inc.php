@@ -1,7 +1,7 @@
 <?php 
-    // if(isset($_SESSION['username'])) {
-    //     $username = ucfirst($_SESSION['username']);
-    // }
+    if(isset($_SESSION['username'])) {
+        $username = ucfirst($_SESSION['username']);
+    }
 ?>
 <div class="page-sidebar">
     <div class="page-sidebar-inner">
