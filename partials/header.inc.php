@@ -18,7 +18,7 @@
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
     $user = $wrapper->getUser();
-    $_SESSION['username'] = $user->get('Username');
+    // $user = $user->get('Username');
     
     
     // S3 CONFIG SETTINGS
@@ -133,7 +133,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $_SESSION['username']; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $user; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
