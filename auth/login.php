@@ -16,10 +16,14 @@
         if($_POST['action'] === 'login') {
             // $error = $wrapper->authenticate($username, $password);
 
-            if(empty($error)) {
-                header('Location: secure.php');
+            if($wrapper->authenticate($username, $password)) {
+                $_SESSION['username'] = $username;
+                header('Location: ../dashboard.php');
                 exit;
             }
+            // $_SESSION['username'] = $username;
+            // header('Location: ../dashboard.php');
+            // exit;
         }
     }
 
