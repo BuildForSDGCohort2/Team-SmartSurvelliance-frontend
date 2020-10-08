@@ -6,6 +6,7 @@
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
+    // $error = '';
 
     $entercode = false;
 
@@ -25,13 +26,13 @@
 
 	        $code = htmlspecialchars(strip_tags($_POST['code']));
 	        $password = htmlspecialchars(strip_tags($_POST['password']));
-	        $username = htmlspecialchars(strip_tags($_GET['username']));
+	        $username = htmlspecialchars(strip_tags($_POST['username']));
 
 	        $error = $wrapper->resetPassword($code, $password, $username);
 
 	        // TODO: show message on new page that password has been reset
 	        if(empty($error)) {
-	            header('Location: login.php?reset=true');
+	            header('Location: login.php?status=true&message=password was reset successfully.');
 	        }
 	    }
 	}
@@ -69,6 +70,7 @@
                                             <input type="password" class="form-control" name="password" id="password" placeholder="Password" required>
                                         </div>
                                         
+                                        <input type='hidden' name="username" id="username"/>
                                         <input type='hidden' name='action' value='reset' />
 
                                         <div class="form-group">
