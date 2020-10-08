@@ -1,5 +1,5 @@
 <?php ob_start();
-
+    session_start();
     require '../vendor/autoload.php';
 
     use AWSCognitoApp\AWSCognitoWrapper;
@@ -10,20 +10,16 @@
 
     if(isset($_POST['action'])) {
 
+        $username = htmlspecialchars(strip_tags($_POST['username']));
+        $password = htmlspecialchars(strip_tags($_POST['password']));
+
         if($_POST['action'] === 'login') {
-            $username = htmlspecialchars(strip_tags($_POST['username']));
-            $password = htmlspecialchars(strip_tags($_POST['password']));
-            
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
-                // $_SESSION['username'] = $username;
-                header('Location: ../dashboard.php');
+                header('Location: secure.php');
                 exit;
             }
-            // $_SESSION['username'] = $username;
-            // header('Location: ../dashboard.php');
-            // exit;
         }
     }
 
