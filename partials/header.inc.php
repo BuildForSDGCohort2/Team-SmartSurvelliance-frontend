@@ -9,28 +9,13 @@
     // Twilio API Client
     use Twilio\Rest\Client;
     use Aws\CognitoIdentity\CognitoIdentityClient;
-
-    use AWSCognitoApp\AWSCognitoWrapper;
-
-    $wrapper = new AWSCognitoWrapper();
-    $wrapper->initialize();
-
-    if(!$wrapper->isAuthenticated()) {
-        header('Location: ./auth/login.php');
-        exit;
-    }
-
-    $user = $wrapper->getUser();
-   
-
+     
     
     // if(!isset($_SESSION['username'])) {
     //     header("Location: ./auth/login.php");
     // }else if(isset($_SESSION['username'])) {
     //     $username = ucfirst($_SESSION['username']);
     // }
-
-
     
     // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
@@ -247,7 +232,7 @@
                 <h4>Generate Notification with tap on Notification</h4>
                 <a href="#" id="notificationlabel" class="button">Notification</a>
             </div> -->
-<?php echo $_SESSION['username']; ?>
+
             <script>
                 $(document).ready(function() {
                     $('#notificationlabel').click('on', function(e) {
