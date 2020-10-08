@@ -16,7 +16,7 @@
         if($_POST['action'] === 'login') {
             $error = $wrapper->authenticate($username, $password);
 
-            if(empty($error)) {
+            if(!empty($error)) {
                 header('Location: secure.php');
                 exit;
             }
