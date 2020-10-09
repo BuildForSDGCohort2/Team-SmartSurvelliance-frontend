@@ -1,19 +1,20 @@
-<?php 
-    // session_destroy();
-    require_once 'functions.inc.php';
-    require './vendor/autoload.php';
-    // $config = require './api/config/core.php';
+<?php
+require_once 'functions.inc.php';
+require './vendor/autoload.php';
 
-    // AWS API client
-    use Aws\S3\S3Client;
-    // Twilio API Client
-    use Twilio\Rest\Client;
-    use Aws\CognitoIdentity\CognitoIdentityClient;
-    use AWSCognitoApp\AWSCognitoWrapper;
+use AWSCognitoApp\AWSCognitoWrapper;
 
-    $wrapper = new AWSCognitoWrapper();
-    $wrapper->initialize();
+$wrapper = new AWSCognitoWrapper();
+$wrapper->initialize();
 
+if(!$wrapper->isAuthenticated()) {
+    header('Location: /');
+    exit;
+}
+
+$user = $wrapper->getUser();
+$pool = $wrapper->getPoolMetadata();
+$users = $wrapper->getPoolUsers();
     // if(!$wrapper->isAuthenticated()) {
     //     header('Location: ../auth/login.php');
     //     exit;
