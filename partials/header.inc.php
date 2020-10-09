@@ -7,10 +7,6 @@ use AWSCognitoApp\AWSCognitoWrapper;
 $wrapper = new AWSCognitoWrapper();
 $wrapper->initialize();
 
-if(!$wrapper->isAuthenticated()) {
-    header('Location: /');
-    exit;
-}
 
 $user = $wrapper->getUser();
 $pool = $wrapper->getPoolMetadata();
