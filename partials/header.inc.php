@@ -9,8 +9,8 @@ $wrapper->initialize();
 
 
 $user = $wrapper->getUser();
-$pool = $wrapper->getPoolMetadata();
-$users = $wrapper->getPoolUsers();
+// $pool = $wrapper->getPoolMetadata();
+// $users = $wrapper->getPoolUsers();
     // if(!$wrapper->isAuthenticated()) {
     //     header('Location: ../auth/login.php');
     //     exit;
