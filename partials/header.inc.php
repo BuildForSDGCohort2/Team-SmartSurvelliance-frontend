@@ -20,6 +20,9 @@
     }
 
     $user = $wrapper->getUser();
+    print_r($user);
+    $username = $user->get('Username');
+    echo '<br>'.$username;
      
     
     // if(!isset($_SESSION['username'])) {

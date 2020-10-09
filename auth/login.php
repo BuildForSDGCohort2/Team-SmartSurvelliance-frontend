@@ -17,7 +17,8 @@
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
-                header('Location: secure.php');
+                // $_SESSION['username'] = $username;
+                header('Location: ../dashboard.php');
                 exit;
             }
         }
