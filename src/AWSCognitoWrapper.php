@@ -3,12 +3,12 @@ namespace AWSCognitoApp;
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 use Aws\CognitoIdentity\CognitoIdentityClient;
 use Aws\Sts\StsClient;
-putenv('CLIENT_ID=73nkbeiki4s2q5c2v9v8ek4aue');
-putenv('USERPOOL_ID=us-east-1_yXMlljTfq');
-putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIFFNLSWMP');
-putenv('AWS_SECRET_ACCESS_KEY=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');
-putenv('REGION=us-east-1');
-putenv('VERSION=latest');
+putenv('CLIENT_ID');
+putenv('USERPOOL_ID');
+putenv('AWS_ACCESS_KEY_ID');
+putenv('AWS_SECRET_ACCESS_KEY');
+putenv('REGION');
+putenv('VERSION');
 
 class AWSCognitoWrapper
 {
