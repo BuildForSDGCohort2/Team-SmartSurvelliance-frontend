@@ -1,25 +1,5 @@
 <?php
-// require_once 'functions.inc.php';
-require '../vendor/autoload.php';
 
-use AWSCognitoApp\AWSCognitoWrapper;
-
-$wrapper = new AWSCognitoWrapper();
-$wrapper->initialize();
-
-
-$user = $wrapper->getUser();
-// $pool = $wrapper->getPoolMetadata();
-// $users = $wrapper->getPoolUsers();
-    // if(!$wrapper->isAuthenticated()) {
-    //     header('Location: ../auth/login.php');
-    //     exit;
-    // }
-
-    $user = $wrapper->getUser();
-    print_r($user);
-    $username = $user->get('Username');
-    echo '<br>'.$username;
      
     
     // if(!isset($_SESSION['username'])) {
