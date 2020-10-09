@@ -17,7 +17,7 @@
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
-                header('Location: '.$_SERVER['DOCUMENT_ROOT'].'/dashboard.php');
+                header('Location: '.$_SERVER['DOCUMENT_ROOT'].'app/dashboard.php');
                 exit;
             }
         }
