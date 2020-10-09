@@ -44,7 +44,7 @@
                     ],
                 ]);
             } catch(\Exception $e) {
-                echo $e->getMessage();
+                return $e->getMessage();
             }
 
             $accessToken = $result->get('AuthenticationResult')['AccessToken'];
