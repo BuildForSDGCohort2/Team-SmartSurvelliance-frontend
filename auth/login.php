@@ -14,28 +14,13 @@
         $password = htmlspecialchars(strip_tags($_POST['password']));
 
         if($_POST['action'] === 'login') {
-            // $error = $wrapper->authenticate($username, $password);
-            try {
-                $result = $client->adminInitiateAuth([
-                    'AuthFlow' => 'ADMIN_NO_SRP_AUTH',
-                    'ClientId' => getenv('CLIENT_ID'),
-                    'UserPoolId' => getenv('USERPOOL_ID'),
-                    'AuthParameters' => [
-                        'USERNAME' => $username,
-                        'PASSWORD' => $password,
-                    ],
-                ]);
-            } catch (\Exception $e) {
-                return $e->getMessage();
-            }
+            $error = $wrapper->authenticate($username, $password);
 
-            $client->setAuthenticationCookie($result->get('AuthenticationResult')['AccessToken']);
-            $_SESSION['username'] = $username;
-            header('Location: ../dashboard.php');
-            exit;
-            // $_SESSION['username'] = $username;
-            // header('Location: ../dashboard.php');
-            // exit;
+            if(empty($error)) {
+                // $_SESSION['username'] = $username;
+                header('Location: ../dashboard.php');
+                exit;
+            }
         }
     }
 
