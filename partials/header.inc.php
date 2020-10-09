@@ -14,10 +14,10 @@
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
 
-    if(!$wrapper->isAuthenticated()) {
-        header('Location: ../auth/login.php');
-        exit;
-    }
+    // if(!$wrapper->isAuthenticated()) {
+    //     header('Location: ../auth/login.php');
+    //     exit;
+    // }
 
     $user = $wrapper->getUser();
     print_r($user);

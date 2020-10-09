@@ -17,7 +17,7 @@
             $error = $wrapper->authenticate($username, $password);
 
             if(empty($error)) {
-                header('Location: '.dirname("/dashboard.php").'');
+                header('Location: ../dashboard.php');
                 exit;
             }
         }
