@@ -1,6 +1,6 @@
 <?php
 // require_once 'functions.inc.php';
-require './vendor/autoload.php';
+require '../vendor/autoload.php';
 
 use AWSCognitoApp\AWSCognitoWrapper;
 
