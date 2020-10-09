@@ -1,5 +1,4 @@
-<?php ob_start();
-    session_start();
+<?php 
     require '../vendor/autoload.php';
 
     use AWSCognitoApp\AWSCognitoWrapper;
