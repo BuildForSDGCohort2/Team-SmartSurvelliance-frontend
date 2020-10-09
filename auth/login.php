@@ -20,6 +20,8 @@
                 // $_SESSION['username'] = $username;
                 header('Location: ../dashboard.php');
                 exit;
+            }else{
+                echo $error;
             }
         }
     }
