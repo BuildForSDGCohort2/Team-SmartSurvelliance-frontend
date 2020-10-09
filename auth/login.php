@@ -19,6 +19,15 @@
         if($_POST['action'] === 'login') {
             // $error = $wrapper->authenticate($username, $password);
             try {
+                $client = new CognitoIdentityProviderClient([
+                    'version' => 'latest',
+                    'region' => env('AWS_REGION', '')
+                    'credentials' => [
+                        'key'    => getenv('AWS_ACCESS_KEY_ID'),
+                        'secret' => getenv('AWS_SECRET_ACCESS_KEY')
+                    ]
+                ]);
+
                 $result = $client->adminInitiateAuth([
                     'AuthFlow' => 'ADMIN_NO_SRP_AUTH',
                     'ClientId' => getenv('CLIENT_ID'),
@@ -28,12 +37,15 @@
                         'PASSWORD' => $password,
                     ],
                 ]);
-            } catch (\Exception $e) {
+            } catch(\Exception $e) {
                 echo $e->getMessage();
             }
 
-            $client->setAuthenticationCookie($result->get('AuthenticationResult')['AccessToken']);
+            $accessToken = $result->get('AuthenticationResult')['AccessToken'];
+            echo $accessToken;
+
             $_SESSION['username'] = $username;
+            $_SESSION['accessToken'] = $accessToken;
             header('Location: ../dashboard.php');
             exit;
             // $_SESSION['username'] = $username;
