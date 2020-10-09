@@ -3,6 +3,9 @@
     require '../vendor/autoload.php';
 
     use AWSCognitoApp\AWSCognitoWrapper;
+    use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
+    use Aws\CognitoIdentity\CognitoIdentityClient;
+    use Aws\Sts\StsClient;
 
     $wrapper = new AWSCognitoWrapper();
     $wrapper->initialize();
@@ -16,7 +19,7 @@
         if($_POST['action'] === 'login') {
             // $error = $wrapper->authenticate($username, $password);
             try {
-                $result = $this->client->adminInitiateAuth([
+                $result = $client->adminInitiateAuth([
                     'AuthFlow' => 'ADMIN_NO_SRP_AUTH',
                     'ClientId' => getenv('CLIENT_ID'),
                     'UserPoolId' => getenv('USERPOOL_ID'),
@@ -26,10 +29,10 @@
                     ],
                 ]);
             } catch (\Exception $e) {
-                return $e->getMessage();
+                echo $e->getMessage();
             }
 
-            $this->setAuthenticationCookie($result->get('AuthenticationResult')['AccessToken']);
+            $client->setAuthenticationCookie($result->get('AuthenticationResult')['AccessToken']);
             $_SESSION['username'] = $username;
             header('Location: ../dashboard.php');
             exit;
