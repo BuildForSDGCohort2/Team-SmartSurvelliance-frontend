@@ -44,15 +44,15 @@ else{
 
 <?php
 
-$access_token = $_GET["code"];
+$access_token = $_GET["access_token"];
 
 $region = 'ap-south-1';
 $version = '<AWS_REGION>';
 
 //Authenticate with AWS Acess Key and Secret
 $client = new CognitoIdentityProviderClient([
-    'version' => $version,
-    'region' => $region,
+    'version' => getenv('VERSION'),
+    'region' => getenv('REGION'),
 	'credentials' => [
                     'key'    => '<AWS_ACCESS_KEY>',
                     'secret' => '<AWS_SECRET>',

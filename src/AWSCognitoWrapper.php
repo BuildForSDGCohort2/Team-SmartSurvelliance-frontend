@@ -5,8 +5,8 @@ use Aws\CognitoIdentity\CognitoIdentityClient;
 use Aws\Sts\StsClient;
 putenv('CLIENT_ID=73nkbeiki4s2q5c2v9v8ek4aue');
 putenv('USERPOOL_ID=us-east-1_yXMlljTfq');
-putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIFFNLSWMP');
-putenv('AWS_SECRET_ACCESS_KEY=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');
+putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIMW7QIUPG,OAz');
+putenv('AWS_SECRET_ACCESS_KEY=b57ImT2yIfXkVWTA+uicOO8t2hDs4UIaJd5c');
 putenv('REGION=us-east-1');
 putenv('VERSION=latest');
 
