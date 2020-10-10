@@ -89,6 +89,16 @@ try {
 		}
 	}	
 	header('Location: dashboard.php');
+
+	if(isset($_GET["logout"]) && $_GET["logout"] == 'true'){
+        //This will invalidate the access token
+        $result = $client->globalSignOut([
+            'AccessToken' => $access_token,
+        ]);
+        
+        header("Location: auth/logout.php");
+        
+    }
 	
 	
 } catch (\Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException $e) {

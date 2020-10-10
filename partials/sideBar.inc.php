@@ -28,7 +28,7 @@
                     <li><a href="#" class="waves-effect waves-grey"><i class="material-icons">done</i>Sent Mail</a></li>
                     <li><a href="#" class="waves-effect waves-grey"><i class="material-icons">history</i>History</a></li>
                     <li class="divider"></li>
-                    <li><a href="../auth/logout.php?logout=true&access_token=<?= $access_token; ?>" class="waves-effect waves-grey"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
+                    <li><a href="../process.php?logout=true&access_token=<?= $access_token; ?>" class="waves-effect waves-grey"><i class="material-icons">exit_to_app</i>Sign Out</a></li>
                 </ul>
             </div>
             <div class="sidebar-accordion-menu">
