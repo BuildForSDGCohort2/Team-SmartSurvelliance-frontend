@@ -1,5 +1,6 @@
 <?php 
     if(isset($_SESSION['user_email'])) {
+        $user = $_SESSION['user'];
         $user_email = ucfirst($_SESSION['user_email']);
         $access_token = $_SESSION['access_token'];
         $user_phone_number = $_SESSION['user_phone_number'];
@@ -14,8 +15,8 @@
             <div class="sidebar-profile-info">
                 <a href="javascript:void(0);" class="account-settings-link">
                     <?php if ($_SESSION['user_email']): ?>
-                        <!-- <p style="text-align: center;"><?= $user_email; ?></p> -->
-                        <span><?= $user_email; ?><i class="material-icons float-right">arrow_drop_down</i></span>
+                        <p style="text-align: center;"><?= $user_email; ?></p>
+                        <span><?= $user; ?><i class="material-icons float-right">arrow_drop_down</i></span>
                     <?php endif ?>
                 </a>
             </div>

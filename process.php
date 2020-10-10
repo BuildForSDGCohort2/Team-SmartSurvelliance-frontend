@@ -81,7 +81,10 @@ try {
 	foreach ($userAttributesArray as $key => $val) {
 		if($val["Name"] == "email"){
 			$user_email = $val["Value"];
+			$user = strstr($user_email, '@', true);
+
 			$_SESSION['user_email'] = $user_email;
+			$_SESSION['user'] = $user;
 		}
 		if($val["Name"] == "phone_number"){
 			$user_phone_number = $val["Value"];

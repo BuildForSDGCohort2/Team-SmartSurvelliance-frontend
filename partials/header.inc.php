@@ -6,14 +6,11 @@
         header("Location: https://kingso101-smart-home-demo.auth.us-east-1.amazoncognito.com/login?client_id=73nkbeiki4s2q5c2v9v8ek4aue&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://smart-surveillance-web-app.herokuapp.com/process.php");
     }else{
         $user_email = $_SESSION['user_email'];
+        $user = $_SESSION['user'];
         $user_phone_number = $_SESSION['user_phone_number'];
         $access_token = $_SESSION['access_token'];
-
-        $user1 = strstr($user_email, '@');
-        echo $user1; // prints @example.com
-
-        $user = strstr($user_email, '@', true); // As of PHP 5.3.0
-        echo $user; // prints name
+ 
+        // echo $user; 
 
     }
                  
