@@ -1,38 +1,35 @@
 <?php 
-// session_start();
-//     // session_destroy();
+
     require_once 'functions.inc.php';
-     require './vendor/autoload.php';
- $config = require './api/config/core.php';
+    require './vendor/autoload.php';
 
-//     // AWS API client
-//     use Aws\S3\S3Client;
-//     // Twilio API Client
-//     use Twilio\Rest\Client;
-//     use Aws\CognitoIdentity\CognitoIdentityClient;
-//     use AWSCognitoApp\AWSCognitoWrapper;
-
-//     $wrapper = new AWSCognitoWrapper();
-//     $wrapper->initialize();
-
-//     // if(!$wrapper->isAuthenticated()) {
-//     //     header('Location: ../auth/login.php');
-//     //     exit;
-//     // }
-
-//     $user = $wrapper->getUser();
-//     print_r($user);
-//     $username = $user->get('Username');
-//     echo '<br>'.$username;
+    // // AWS API client
+    // use Aws\S3\S3Client;
+    // // Twilio API Client
+    // use Twilio\Rest\Client;
+    // use Aws\CognitoIdentity\CognitoIdentityClient;
      
+    // // get database connection
+    // $database = new Database();
+    // $db = $database->connect();
+    // // prepare contact object
+    // $contact = new Contact($db);
+    // // query contact
+    // $stmt = $contact->countMessages();
+    // $messageNum = count($stmt);
+    // // check if more than 0 record found
+    // // echo $messageNum;
     
-    // if(!isset($_SESSION['username'])) {
+    // if(!isset($_SESSION['id'])) {
     //     header("Location: ./auth/login.php");
-    // }else if(isset($_SESSION['username'])) {
-    //     $username = ucfirst($_SESSION['username']);
+    // }else if(isset($_SESSION['id'])) {
+    //     $firstname = ucfirst($_SESSION['firstname']);
+    //     $lastname = ucfirst($_SESSION['lastname']);
+    //     $fullname = $firstname ." ".$lastname;
+    //     $email = $_SESSION['email'];
     // }
-    
-    // S3 CONFIG SETTINGS
+    // // session_destroy();
+    // // S3 CONFIG SETTINGS
     // $bucket = $config['s3']['BUCKET'];
 
     // $client = new S3Client([
@@ -72,10 +69,7 @@
     // return $cogClient;
 
 ?>
-<script>
-    // var num = '<?= $messageNum; ?>';
-    // console.log(num);
-</script>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -144,7 +138,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $_SESSION['username']; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $firstname; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -162,7 +156,7 @@
                             <li class="nav-item dropdown d-none d-lg-block">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications_none</i>
-                                    <span class="badge">1</span>
+                                    <span class="badge"><?php if ($messageNum) { echo $messageNum; } ?></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right dd-notifications" aria-labelledby="navbarDropdown">
                                     <li class="notification-drop-title">Today</li>
