@@ -50,17 +50,13 @@ $id_token = $_GET["id_token"];
 $access_token = $_GET["access_token"];
 $_SESSION['access_token'] = $access_token;
 
-echo 'ID Token is ' .$id_token ."<br>";
-echo 'Access Token is ' .$access_token;
-echo 'Session Token is ' .$_SESSION['access_token'];
-
-$region = 'ap-south-1';
-$version = '<AWS_REGION>';
+$region = getenv('REGION');
+$version = getenv('VERSION');
 
 //Authenticate with AWS Acess Key and Secret
 $client = new CognitoIdentityProviderClient([
-    'version' => getenv('VERSION'),
-    'region' => getenv('REGION'),
+    'version' => $version,
+    'region' => $region,
 	'credentials' => [
         'key'    => getenv('AWS_ACCESS_KEY_ID'),
         'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
@@ -80,6 +76,8 @@ try {
 		
 	//Iterate all the user attributes and get email and phone number
 	$userAttributesArray = $result["UserAttributes"];
+	print_r($userAttributesArray);
+
 	foreach ($userAttributesArray as $key => $val) {
 		if($val["Name"] == "email"){
 			$user_email = $val["Value"];
@@ -91,7 +89,7 @@ try {
 	}	
 	echo '<h2>Logged-In User Attributes</h2>';
 	echo '<p>User E-Mail : ' . $user_email . '</p>';
-	echo '<p>User E-Mail : ' . $_SESSION['user_email'] . '</p>';
+	echo '<p> E-Mail SESSION : ' . $_SESSION['user_email'] . '</p>';
 	echo '<p>User Phone Number : ' . $user_phone_number . '</p>';
 	echo "<a href='secure_page.php?logout=true&access_token=$access_token'>SIGN OUT</a>";
 	
