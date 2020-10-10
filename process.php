@@ -87,21 +87,7 @@ try {
 			$user_phone_number = $val["Value"];
 		}
 	}	
-	echo '<h2>Logged-In User Attributes</h2>';
-	echo '<p>User E-Mail : ' . $user_email . '</p>';
-	echo '<p> E-Mail SESSION : ' . $_SESSION['user_email'] . '</p>';
-	echo '<p>User Phone Number : ' . $user_phone_number . '</p>';
-	echo "<a href='secure_page.php?logout=true&access_token=$access_token'>SIGN OUT</a>";
-	
-	if(isset($_GET["logout"]) && $_GET["logout"] == 'true'){
-		//This will invalidate the access token
-		$result = $client->globalSignOut([
-			'AccessToken' => $access_token,
-		]);
-		
-		header("Location: <COGNITO_HOSTED_UI_URL>");
-		
-	}
+	header('Location: dashboard.php?user_email='.$_SESSION['user_email'].'&access_token='.$_SESSION['access_token'].'');
 	
 	
 } catch (\Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException $e) {
