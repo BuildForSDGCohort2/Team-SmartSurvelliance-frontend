@@ -22,8 +22,6 @@ putenv('VERSION=latest');
 	</style>
 </head>
 <body>
-<h1>DEMO PHP COGNITO CLIENT APPLICATION</h1>
-
 
 <?php if(!isset($_GET["id_token"]) && !isset($_GET['access_token'])){ ?>
 <script>
@@ -46,8 +44,10 @@ else{
 
 <?php
 session_start();
-$id_token = $_GET["id_token"];
-$access_token = $_GET["access_token"];
+
+$id_token = htmlspecialchars(strip_tags($_GET['id_token']));
+$access_token = htmlspecialchars(strip_tags($_GET['access_token']));
+
 $_SESSION['access_token'] = $access_token;
 
 $region = getenv('REGION');

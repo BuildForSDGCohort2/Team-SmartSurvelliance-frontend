@@ -2,11 +2,13 @@
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
 
-    if (isset($_SESSION['user_email'])) {
+    if (!isset($_SESSION['user_email'])) {
+        header("Location: https://kingso101-smart-home-demo.auth.us-east-1.amazoncognito.com/login?client_id=73nkbeiki4s2q5c2v9v8ek4aue&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://smart-surveillance-web-app.herokuapp.com/process.php");
+    }else{
         $user_email = $_SESSION['user_email'];
         $user_phone_number = $_SESSION['user_phone_number'];
         $access_token = $_SESSION['access_token'];
-    } 
+    }
                  
 ?>
 <!DOCTYPE html>
