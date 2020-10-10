@@ -44,8 +44,8 @@ else{
 
 <?php
 
-$id_token = $_GET["id_token"];
-$access_token = $_GET["access_token"];
+echo $id_token = $_GET["id_token"];
+echo $access_token = $_GET["access_token"];
 
 $region = 'ap-south-1';
 $version = '<AWS_REGION>';
