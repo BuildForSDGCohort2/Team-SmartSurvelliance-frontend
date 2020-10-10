@@ -1,4 +1,4 @@
-<?php 
+<?php ob_start();
     require_once 'partials/header.inc.php';
     require_once 'partials/quickSearch.inc.php';
     require_once 'partials/sideBar.inc.php'; 
