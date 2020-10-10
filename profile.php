@@ -20,7 +20,7 @@ use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 
 
 <?php
-if(!isset($_GET["access_token"]))
+if(!isset($_GET["id_token"]))
 {
 	
 ?>
