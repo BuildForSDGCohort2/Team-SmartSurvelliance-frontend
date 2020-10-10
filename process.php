@@ -1,4 +1,4 @@
-<?php session_start();
+<?php 
 namespace AWSCognitoApp;
 require_once('vendor/autoload.php');
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
@@ -45,7 +45,7 @@ else{
 ?>
 
 <?php
-
+session_start();
 $id_token = $_GET["id_token"];
 $access_token = $_GET["access_token"];
 $_SESSION['access_token'] = $access_token;
