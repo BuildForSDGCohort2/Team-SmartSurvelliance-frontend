@@ -1,6 +1,12 @@
-<?php 
+<?php session_start();
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
+
+    if (isset($_SESSION['user_email'])) {
+        echo $_SESSION['user_email'] .'<br>';
+        echo $_SESSION['access_token'] .'<br>';
+    } 
+                 
 ?>
 <!DOCTYPE html>
 <html lang="en">
