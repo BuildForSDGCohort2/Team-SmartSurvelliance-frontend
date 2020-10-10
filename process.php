@@ -1,4 +1,4 @@
-<?php
+<?php session_start();
 namespace AWSCognitoApp;
 require_once('vendor/autoload.php');
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
@@ -48,9 +48,11 @@ else{
 
 $id_token = $_GET["id_token"];
 $access_token = $_GET["access_token"];
+$_SESSION['access_token'] = $access_token;
 
 echo 'ID Token is ' .$id_token ."<br>";
 echo 'Access Token is ' .$access_token;
+echo 'Session Token is ' .$_SESSION['access_token'];
 
 $region = 'ap-south-1';
 $version = '<AWS_REGION>';
@@ -60,9 +62,9 @@ $client = new CognitoIdentityProviderClient([
     'version' => getenv('VERSION'),
     'region' => getenv('REGION'),
 	'credentials' => [
-                    'key'    => getenv('AWS_ACCESS_KEY_ID'),
-                    'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
-                ],
+        'key'    => getenv('AWS_ACCESS_KEY_ID'),
+        'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
+    ],
 ]);
 
 try {
@@ -81,6 +83,7 @@ try {
 	foreach ($userAttributesArray as $key => $val) {
 		if($val["Name"] == "email"){
 			$user_email = $val["Value"];
+			$_SESSION['user_email'] = $user_email;
 		}
 		if($val["Name"] == "phone_number"){
 			$user_phone_number = $val["Value"];
@@ -88,6 +91,7 @@ try {
 	}	
 	echo '<h2>Logged-In User Attributes</h2>';
 	echo '<p>User E-Mail : ' . $user_email . '</p>';
+	echo '<p>User E-Mail : ' . $_SESSION['user_email'] . '</p>';
 	echo '<p>User Phone Number : ' . $user_phone_number . '</p>';
 	echo "<a href='secure_page.php?logout=true&access_token=$access_token'>SIGN OUT</a>";
 	
