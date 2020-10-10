@@ -79,7 +79,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $firstname; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $user_email; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -97,7 +97,7 @@
                             <li class="nav-item dropdown d-none d-lg-block">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">notifications_none</i>
-                                    <span class="badge"><?php if ($messageNum) { echo $messageNum; } ?></span>
+                                    <span class="badge">1</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-right dd-notifications" aria-labelledby="navbarDropdown">
                                     <li class="notification-drop-title">Today</li>
