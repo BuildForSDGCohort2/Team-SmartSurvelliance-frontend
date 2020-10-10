@@ -3,8 +3,9 @@
     require './vendor/autoload.php';
 
     if (isset($_SESSION['user_email'])) {
-        echo $_SESSION['user_email'] .'<br>';
-        echo $_SESSION['access_token'] .'<br>';
+        $user_email = $_SESSION['user_email'];
+        $user_phone_number = $_SESSION['user_phone_number'];
+        $access_token = $_SESSION['access_token'];
     } 
                  
 ?>

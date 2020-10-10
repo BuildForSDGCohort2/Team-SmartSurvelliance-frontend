@@ -85,9 +85,10 @@ try {
 		}
 		if($val["Name"] == "phone_number"){
 			$user_phone_number = $val["Value"];
+			$_SESSION['user_phone_number'] = $user_phone_number;
 		}
 	}	
-	header('Location: dashboard.php?user_email='.$_SESSION['user_email'].'&access_token='.$_SESSION['access_token'].'');
+	header('Location: dashboard.php');
 	
 	
 } catch (\Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException $e) {
