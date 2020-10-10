@@ -1,75 +1,7 @@
 <?php 
-
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
-
-    // // AWS API client
-    // use Aws\S3\S3Client;
-    // // Twilio API Client
-    // use Twilio\Rest\Client;
-    // use Aws\CognitoIdentity\CognitoIdentityClient;
-     
-    // // get database connection
-    // $database = new Database();
-    // $db = $database->connect();
-    // // prepare contact object
-    // $contact = new Contact($db);
-    // // query contact
-    // $stmt = $contact->countMessages();
-    // $messageNum = count($stmt);
-    // // check if more than 0 record found
-    // // echo $messageNum;
-    
-    // if(!isset($_SESSION['id'])) {
-    //     header("Location: ./auth/login.php");
-    // }else if(isset($_SESSION['id'])) {
-    //     $firstname = ucfirst($_SESSION['firstname']);
-    //     $lastname = ucfirst($_SESSION['lastname']);
-    //     $fullname = $firstname ." ".$lastname;
-    //     $email = $_SESSION['email'];
-    // }
-    // // session_destroy();
-    // // S3 CONFIG SETTINGS
-    // $bucket = $config['s3']['BUCKET'];
-
-    // $client = new S3Client([
-    //     'version' => $config['s3']['VERSION'],
-    //     'region' => $config['s3']['REGION'],
-    //     'credentials' => [
-    //         'key' => $config['s3']['KEY'],
-    //         'secret' => $config['s3']['SECRET']
-    //     ]
-    // ]);
-
-    // // Twilio client instance
-    // $twilioClient = new Client($config['twilio']['SID'], $config['twilio']['TOKEN']);
-
-    // Cognito client instance
-    // $aws = new \Aws\Sdk($config);
-    // $cognitoClient = $aws->createCognitoIdentityProvider();
-
-    // $cogClient = new \pmill\AwsCognito\CognitoClient($cognitoClient);
-    // $cogClient->setAppClientId($config['cognito']['CLIENT_ID']);
-    // $cogClient->setAppClientSecret($config['s3']['SECRET']);
-    // $cogClient->setRegion($config['s3']['REGION']);
-    // $cogClient->setUserPoolId($config['cognito']['POOL_ID']);
-
-    // $cogClient = new CognitoIdentityProviderClient([
-    //   'version' => $config['cognito']['VERSION'],
-    //   'region' => $config['cognito']['REGION'],
-    // ]);
-
-
-    // $cogClient = CognitoIdentityClient::factory(array(
-    //     'profile' => '<profile in your aws credentials file>',
-    //     'region'  => $config['cognito']['REGION']
-    // ));
-
-
-    // return $cogClient;
-
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
