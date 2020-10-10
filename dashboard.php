@@ -9,7 +9,13 @@
             <div class="page-content">
                 <button id="notificationlabel" type="button" class="btn btn-primary" >
                     Show Notification
-                </button>
+                </button><?php if (isset($_SESSION['user_email'])) {
+                    echo $_SESSION['user_email'] .'<br>';
+                    echo $_SESSION['access_token'] .'<br>';
+                } else {
+                    # code...
+                }
+                 ?>
                 <ul class="ul">
                   <li><a target="_blank" title="Goto Support@hberecords.com Webmail" href="https://server.dktlds.com:2096/cpsess8642207488/3rdparty/roundcube/?_task=mail&_mbox=INBOX"><i class="fa fa-cube" aria-hidden="true"></i></a></li>
                 </ul>
