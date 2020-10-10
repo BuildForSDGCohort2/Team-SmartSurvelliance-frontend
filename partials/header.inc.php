@@ -1,73 +1,87 @@
 <?php 
-
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
+    use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 
-    // // AWS API client
-    // use Aws\S3\S3Client;
-    // // Twilio API Client
-    // use Twilio\Rest\Client;
-    // use Aws\CognitoIdentity\CognitoIdentityClient;
-     
-    // // get database connection
-    // $database = new Database();
-    // $db = $database->connect();
-    // // prepare contact object
-    // $contact = new Contact($db);
-    // // query contact
-    // $stmt = $contact->countMessages();
-    // $messageNum = count($stmt);
-    // // check if more than 0 record found
-    // // echo $messageNum;
-    
-    // if(!isset($_SESSION['id'])) {
-    //     header("Location: ./auth/login.php");
-    // }else if(isset($_SESSION['id'])) {
-    //     $firstname = ucfirst($_SESSION['firstname']);
-    //     $lastname = ucfirst($_SESSION['lastname']);
-    //     $fullname = $firstname ." ".$lastname;
-    //     $email = $_SESSION['email'];
-    // }
-    // // session_destroy();
-    // // S3 CONFIG SETTINGS
-    // $bucket = $config['s3']['BUCKET'];
+    if(!isset($_GET["id_token"]) && !isset($_GET['access_token'])){ ?>
+        <script>
+            var url_str = window.location.href;
+            //On successful authentication, AWS Cognito will redirect to Call-back URL and pass the access_token as a request parameter. 
+            //If you notice the URL, a “#” symbol is used to separate the query parameters instead of the “?” symbol. 
+            //So we need to replace the “#” with “?” in the URL and call the page again.
+            
+            if(url_str.includes("#")){
+                var url_str_hash_replaced = url_str.replace("#", "?");
+                window.location.href = url_str_hash_replaced;
+            }
+            
+        </script>
 
-    // $client = new S3Client([
-    //     'version' => $config['s3']['VERSION'],
-    //     'region' => $config['s3']['REGION'],
-    //     'credentials' => [
-    //         'key' => $config['s3']['KEY'],
-    //         'secret' => $config['s3']['SECRET']
-    //     ]
-    // ]);
+<?php }else{ 
+    $id_token = $_GET["id_token"];
+    $access_token = $_GET["access_token"];
 
-    // // Twilio client instance
-    // $twilioClient = new Client($config['twilio']['SID'], $config['twilio']['TOKEN']);
+    echo 'ID Token is ' .$id_token ."<br>";
+    echo 'Access Token is ' .$access_token;
 
-    // Cognito client instance
-    // $aws = new \Aws\Sdk($config);
-    // $cognitoClient = $aws->createCognitoIdentityProvider();
+    $region = getenv('REGION');
+    $version = getenv('VERSION');
 
-    // $cogClient = new \pmill\AwsCognito\CognitoClient($cognitoClient);
-    // $cogClient->setAppClientId($config['cognito']['CLIENT_ID']);
-    // $cogClient->setAppClientSecret($config['s3']['SECRET']);
-    // $cogClient->setRegion($config['s3']['REGION']);
-    // $cogClient->setUserPoolId($config['cognito']['POOL_ID']);
+    //Authenticate with AWS Acess Key and Secret
+    $client = new CognitoIdentityProviderClient([
+        'version' => $version,
+        'region' => $region,
+        'credentials' => [
+            'key'    => getenv('AWS_ACCESS_KEY_ID'),
+            'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
+        ],
+    ]);
 
-    // $cogClient = new CognitoIdentityProviderClient([
-    //   'version' => $config['cognito']['VERSION'],
-    //   'region' => $config['cognito']['REGION'],
-    // ]);
+    try {
+        //Get the User data by passing the access token received from Cognito
+        $result = $client->getUser([
+            'AccessToken' => $access_token,
+        ]);
+        
+        //print_r($result);
+        
+        $user_email = "";
+        $user_phone_number = "";
+            
+        //Iterate all the user attributes and get email and phone number
+        $userAttributesArray = $result["UserAttributes"];
+        foreach ($userAttributesArray as $key => $val) {
+            if($val["Name"] == "email"){
+                $user_email = $val["Value"];
+            }
+            if($val["Name"] == "phone_number"){
+                $user_phone_number = $val["Value"];
+            }
+        }   
+        echo '<h2>Logged-In User Attributes</h2>';
+        echo '<p>User E-Mail : ' . $user_email . '</p>';
+        echo '<p>User Phone Number : ' . $user_phone_number . '</p>';
+        echo "<a href='secure_page.php?logout=true&access_token=$access_token'>SIGN OUT</a>";
+        
+        if(isset($_GET["logout"]) && $_GET["logout"] == 'true'){
+            //This will invalidate the access token
+            $result = $client->globalSignOut([
+                'AccessToken' => $access_token,
+            ]);
+            
+            header("Location: <COGNITO_HOSTED_UI_URL>");
+            
+        }
+        
+        
+    } catch (\Aws\CognitoIdentityProvider\Exception\CognitoIdentityProviderException $e) {
+        echo 'FAILED TO VALIDATE THE ACCESS TOKEN. ERROR = ' . $e->getMessage();
+        }
+    catch (\Aws\Exception\CredentialsException $e) {
+        echo 'FAILED TO AUTHENTICATE AWS KEY AND SECRET. ERROR = ' . $e->getMessage();
+        }
 
-
-    // $cogClient = CognitoIdentityClient::factory(array(
-    //     'profile' => '<profile in your aws credentials file>',
-    //     'region'  => $config['cognito']['REGION']
-    // ));
-
-
-    // return $cogClient;
-
+    }
 ?>
 
 <!DOCTYPE html>
@@ -125,11 +139,11 @@
         <![endif]-->
     </head>
     <body>
-        <!-- <div class="loader">
+        <div class="loader">
             <div class="spinner-border text-primary" role="status">
                 <span class="sr-only">Loading...</span>
             </div>
-        </div> -->
+        </div>
         <div class="alpha-app">
             <div class="page-header">
                 <nav class="navbar navbar-expand primary">
@@ -253,3 +267,4 @@
                     
                 });
             </script>
+<?php } ?>
