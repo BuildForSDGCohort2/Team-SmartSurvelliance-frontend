@@ -25,11 +25,7 @@ putenv('VERSION=latest');
 <h1>DEMO PHP COGNITO CLIENT APPLICATION</h1>
 
 
-<?php
-if(!isset($_GET["id_token"]) && !isset($_GET['access_token']))
-{
-	
-?>
+<?php if(!isset($_GET["id_token"]) && !isset($_GET['access_token'])){ ?>
 <script>
 	var url_str = window.location.href;
 	//On successful authentication, AWS Cognito will redirect to Call-back URL and pass the access_token as a request parameter. 
