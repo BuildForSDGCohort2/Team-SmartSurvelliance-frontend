@@ -20,7 +20,7 @@ use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 
 
 <?php
-if(!isset($_GET["id_token"]))
+if(!isset($_GET["id_token"]) && isset($_GET['access_token']))
 {
 	
 ?>
@@ -44,6 +44,7 @@ else{
 
 <?php
 
+$id_token = $_GET["id_token"];
 $access_token = $_GET["access_token"];
 
 $region = 'ap-south-1';
