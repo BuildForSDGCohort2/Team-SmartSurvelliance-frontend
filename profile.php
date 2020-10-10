@@ -20,7 +20,7 @@ use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
 
 
 <?php
-if(!isset($_GET["id_token"]) && isset($_GET['access_token']))
+if(!isset($_GET["id_token"]) && !isset($_GET['access_token']))
 {
 	
 ?>
@@ -44,8 +44,11 @@ else{
 
 <?php
 
-echo $id_token = $_GET["id_token"];
-echo $access_token = $_GET["access_token"];
+$id_token = $_GET["id_token"];
+$access_token = $_GET["access_token"];
+
+echo 'ID Token is ' .$id_token ."<br>";
+echo 'Access Token is ' .$access_token;
 
 $region = 'ap-south-1';
 $version = '<AWS_REGION>';
