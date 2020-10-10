@@ -1,9 +1,9 @@
 <?php 
 // session_start();
 //     // session_destroy();
-//     require_once 'functions.inc.php';
-//     require './vendor/autoload.php';
-//     // $config = require './api/config/core.php';
+    require_once 'functions.inc.php';
+     require './vendor/autoload.php';
+ $config = require './api/config/core.php';
 
 //     // AWS API client
 //     use Aws\S3\S3Client;
