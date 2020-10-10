@@ -1,5 +1,29 @@
-<?php
+<?php 
+// session_start();
+//     // session_destroy();
+//     require_once 'functions.inc.php';
+//     require './vendor/autoload.php';
+//     // $config = require './api/config/core.php';
 
+//     // AWS API client
+//     use Aws\S3\S3Client;
+//     // Twilio API Client
+//     use Twilio\Rest\Client;
+//     use Aws\CognitoIdentity\CognitoIdentityClient;
+//     use AWSCognitoApp\AWSCognitoWrapper;
+
+//     $wrapper = new AWSCognitoWrapper();
+//     $wrapper->initialize();
+
+//     // if(!$wrapper->isAuthenticated()) {
+//     //     header('Location: ../auth/login.php');
+//     //     exit;
+//     // }
+
+//     $user = $wrapper->getUser();
+//     print_r($user);
+//     $username = $user->get('Username');
+//     echo '<br>'.$username;
      
     
     // if(!isset($_SESSION['username'])) {
@@ -76,22 +100,22 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
         
-        <link rel="stylesheet" href="../assets/plugins/select2/css/select2.min.css">
-        <link rel="stylesheet" href="../assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
-        <link rel="stylesheet" href="../assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
-        <link href="../assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
-        <link href="../assets/plugins/waves/waves.min.css" rel="stylesheet">
-        <link href="../assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
-        <link href="../assets/plugins/toastr/toastr.min.css" rel="stylesheet"> 
+        <link rel="stylesheet" href="assets/plugins/select2/css/select2.min.css">
+        <link rel="stylesheet" href="assets/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+        <link rel="stylesheet" href="assets/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+        <link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="assets/plugins/font-awesome/css/all.min.css" rel="stylesheet">
+        <link href="assets/plugins/waves/waves.min.css" rel="stylesheet">
+        <link href="assets/plugins/nvd3/nv.d3.min.css" rel="stylesheet">
+        <link href="assets/plugins/toastr/toastr.min.css" rel="stylesheet"> 
         <!-- Theme style -->  
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
         <link href="https://fonts.googleapis.com/css?family=Material+Icons|Material+Icons+Outlined|Material+Icons+Two+Tone|Material+Icons+Round|Material+Icons+Sharp" rel="stylesheet">
 
         <!-- Theme Styles -->
-        <link href="../assets/css/alpha.min.css" rel="stylesheet">
-        <!-- <link rel="stylesheet" href="../assets/dist/css/adminlte.min.css"> -->
-        <link href="../assets/css/custom.css" rel="stylesheet">
+        <link href="assets/css/alpha.min.css" rel="stylesheet">
+        <!-- <link rel="stylesheet" href="assets/dist/css/adminlte.min.css"> -->
+        <link href="assets/css/custom.css" rel="stylesheet">
         <script type="text/javascript" src="assets/js/custom.js"></script>
         <!-- jQuery library -->
         <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
