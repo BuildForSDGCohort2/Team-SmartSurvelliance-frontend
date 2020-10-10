@@ -53,7 +53,7 @@ class AWSCognitoWrapper
     {
         try {
             $result = $this->client->adminInitiateAuth([
-                'AuthFlow' => 'ADMIN_USER_PASSWORD_AUTH',
+                'AuthFlow' => 'ADMIN_NO_SRP_AUTH',
                 'ClientId' => $this->client_id,
                 'UserPoolId' => $this->userpool_id,
                 'AuthParameters' => [
