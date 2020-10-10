@@ -2,6 +2,12 @@
 namespace AWSCognitoApp;
 require_once('vendor/autoload.php');
 use Aws\CognitoIdentityProvider\CognitoIdentityProviderClient;
+putenv('CLIENT_ID=73nkbeiki4s2q5c2v9v8ek4aue');
+putenv('USERPOOL_ID=us-east-1_yXMlljTfq');
+putenv('AWS_ACCESS_KEY_ID=AKIATBV3IPRIMW7QIUPG,OAz');
+putenv('AWS_SECRET_ACCESS_KEY=b57ImT2yIfXkVWTA+uicOO8t2hDs4UIaJd5c');
+putenv('REGION=us-east-1');
+putenv('VERSION=latest');
 ?>
 
 
@@ -58,8 +64,8 @@ $client = new CognitoIdentityProviderClient([
     'version' => getenv('VERSION'),
     'region' => getenv('REGION'),
 	'credentials' => [
-                    'key'    => '<AWS_ACCESS_KEY>',
-                    'secret' => '<AWS_SECRET>',
+                    'key'    => getenv('AWS_ACCESS_KEY_ID'),
+                    'secret' => getenv('AWS_SECRET_ACCESS_KEY'),
                 ],
 ]);
 
