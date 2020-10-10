@@ -8,6 +8,13 @@
         $user_email = $_SESSION['user_email'];
         $user_phone_number = $_SESSION['user_phone_number'];
         $access_token = $_SESSION['access_token'];
+
+        $user1 = strstr($user_email, '@');
+        echo $user1; // prints @example.com
+
+        $user = strstr($user_email, '@', true); // As of PHP 5.3.0
+        echo $user; // prints name
+
     }
                  
 ?>
@@ -79,7 +86,7 @@
                             <span class="material-design-hamburger__layer"></span>
                         </a>
                     </section>
-                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $user_email; ?></a>
+                    <a class="navbar-brand" href="#">Alpha</a> <br> <a class="navbar-brand" href="#">Welcome <?= $user; ?></a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
