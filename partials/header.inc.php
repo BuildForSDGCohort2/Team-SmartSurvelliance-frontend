@@ -101,7 +101,6 @@
                     .then(function () {
                         alert("Notification permission granted." );
                         console.log("Notification permission granted.");
-                        getRegToken();
                     })
                     .catch(function (err) {
                         alert(err);
@@ -112,14 +111,13 @@
                     messaging.getToken()
                     .then(function(currentToken) {
                         if (currentToken) {
-                            console.log(currentToken);
-                            // sendTokenToServer(currentToken);
-                            // updateUIForPushEnabled(currentToken);
+                            sendTokenToServer(currentToken);
+                            updateUIForPushEnabled(currentToken);
                         }else{
                             // show permission request
                             console.log('No Instance ID token available. Request permission to genreate on.');
                             // show permission UI
-                            // updateUIForPushPermissionRequired();
+                            updateUIForPushPermissionRequired();
                             setTokenSentToServer(false);
                         }
                     })
