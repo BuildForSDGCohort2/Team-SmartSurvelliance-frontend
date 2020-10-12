@@ -130,9 +130,9 @@
                     window.localStorage.setItem('sentToServer', sent ? 1 : 0);
                 }
 
-                // function isTokenSentToServer() {
-                //     return window.localStorage.getItem('sentToServer') == 1;
-                // }
+                function isTokenSentToServer() {
+                    return window.localStorage.getItem('sentToServer') == 1;
+                }
             })
         });
         </script>
