@@ -124,8 +124,8 @@
                         }
                     })
                     .catch(function(err)){
-                        console.log("An error occured while retrieving token.", err);
-                        showToken("Error retrieving instance ID token.", err);
+                        console.log(err);
+                        showToken(err);
                         setTokenSentToServer(false);
                     }
                 }
