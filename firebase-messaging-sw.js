@@ -15,26 +15,26 @@
  // Give the service worker access to Firebase Messaging.
  // Note that you can only use Firebase Messaging here, other Firebase libraries
  // are not available in the service worker.
- importScripts('https://www.gstatic.com/firebasejs/7.21.1/firebase-app.js');
- importScripts('https://www.gstatic.com/firebasejs/7.21.1/firebase-messaging.js');
+ importScripts('https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js');
+ importScripts('https://www.gstatic.com/firebasejs/7.23.0/firebase-messaging.js');
  // Initialize the Firebase app in the service worker by passing in
  // your app's Firebase config object.
  // https://firebase.google.com/docs/web/setup#config-object
  firebase.initializeApp({
-   apiKey: 'api-key',
-   authDomain: 'project-id.firebaseapp.com',
-   databaseURL: 'https://project-id.firebaseio.com',
-   projectId: 'project-id',
-   storageBucket: 'project-id.appspot.com',
-   messagingSenderId: 'sender-id',
-   appId: 'app-id',
-   measurementId: 'G-measurement-id',
+   	apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
+    authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
+    databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
+    projectId: "smart-surveillance-1eaf6",
+    storageBucket: "smart-surveillance-1eaf6.appspot.com",
+    messagingSenderId: "301561777685",
+    appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
+    measurementId: "G-47LRFVSMHN",
  });
  // Retrieve an instance of Firebase Messaging so that it can handle background
  // messages.
  const messaging = firebase.messaging();
  // [END initialize_firebase_in_sw]
- *
+ 
 
 
 // If you would like to customize notifications that are received in the
@@ -44,10 +44,10 @@
 messaging.setBackgroundMessageHandler(function(payload) {
   console.log('[firebase-messaging-sw.js] Received background message ', payload);
   // Customize notification here
-  const notificationTitle = 'Background Message Title';
+  const notificationTitle = 'ALERT! YOU HAVE AN INTRUDER';
   const notificationOptions = {
-    body: 'Background Message body.',
-    icon: '/firebase-logo.png'
+    body: 'You have someone at the front door.',
+    icon: 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg'
   };
 
   return self.registration.showNotification(notificationTitle,

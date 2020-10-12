@@ -133,6 +133,28 @@
                 function isTokenSentToServer() {
                     return window.localStorage.getItem('sentToServer') == 1;
                 }
+
+                function saveToken(currentToken) {
+                    // $.ajax({
+                    //     url: 'action.php',
+                    //     method: 'post',
+                    //     data: 'token=' + currentToken
+                    // }).done(function(result){
+                    //     console.log(result);
+                    // })
+                    console.log("Token saved to database.");
+                }
+
+                messaging.onMessage(function(payload) {
+                  console.log("Message received. ", payload);
+                  notificationTitle = payload.data.title;
+                  notificationOptions = {
+                    body: payload.data.body,
+                    icon: payload.data.icon,
+                    image:  payload.data.image
+                  };
+                  var notification = new Notification(notificationTitle,notificationOptions);
+                });
             })
         });
         </script>
