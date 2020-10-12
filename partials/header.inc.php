@@ -211,21 +211,21 @@
                 $(document).ready(function() {
                     $('#notificationlabel').click('on', function(e) {
                         e.preventDefault();
-                        // alert('Hey');
-                        const messaging = firebase.messaging();
-                        // A promise to get notification permission
-                        messaging.requestPermission()
-                            .then(function () {
-                                alert("Notification permission granted."); 
-                                console.log("Notification permission granted.");
+                        alert('Hey');
+                        // const messaging = firebase.messaging();
+                        // // A promise to get notification permission
+                        // messaging.requestPermission()
+                        //     .then(function () {
+                        //         alert("Notification permission granted."); 
+                        //         console.log("Notification permission granted.");
 
-                                // get the token in the form of promise
-                                // return messaging.getToken()
-                            })
-                            .catch(function (err) {
-                                alert(err);
-                                console.log("Unable to get permission to notify.", err);
-                            });
+                        //         // get the token in the form of promise
+                        //         // return messaging.getToken()
+                        //     })
+                        //     .catch(function (err) {
+                        //         alert(err);
+                        //         console.log("Unable to get permission to notify.", err);
+                        //     });
                     }   
                 });
             </script>
