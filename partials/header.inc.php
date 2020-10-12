@@ -62,12 +62,31 @@
         <link href="https://vjs.zencdn.net/7.8.4/video-js.css" rel="stylesheet" />
         <script src="https://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
 
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-        <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
+        <!-- Firebase SDK for web -->
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+             https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+
+        <script>
+          // Your web app's Firebase configuration
+          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+          var firebaseConfig = {
+            apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
+            authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
+            databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
+            projectId: "smart-surveillance-1eaf6",
+            storageBucket: "smart-surveillance-1eaf6.appspot.com",
+            messagingSenderId: "301561777685",
+            appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
+            measurementId: "G-47LRFVSMHN"
+          };
+          // Initialize Firebase
+          firebase.initializeApp(firebaseConfig);
+          // firebase.analytics();
+        </script>
     </head>
     <body>
         <div class="loader">
@@ -194,7 +213,6 @@
                         // alert('Hey');
                         showNotification();
                         // setInterval(function(){ showNotification(); }, 15000);
-                    })
-                    
+                    }   
                 });
             </script>
