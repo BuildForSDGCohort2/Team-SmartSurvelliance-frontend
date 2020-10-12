@@ -70,23 +70,7 @@
              https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
 
-        <script>
-          // Your web app's Firebase configuration
-          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-          var firebaseConfig = {
-            apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
-            authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
-            databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
-            projectId: "smart-surveillance-1eaf6",
-            storageBucket: "smart-surveillance-1eaf6.appspot.com",
-            messagingSenderId: "301561777685",
-            appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
-            measurementId: "G-47LRFVSMHN"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
-        </script>
+      
     </head>
     <body>
         <div class="loader">
