@@ -105,34 +105,34 @@
                     })
                     .catch(function (err) {
                         alert(err);
-                        console.log(err);
+                        console.log("Unable to get permission to notify.", err);
                     });
 
                 function getRegToken(argument) {
                     messaging.getToken()
-                    .then(function(currentToken) {
+                      .then(function(currentToken) {
                         if (currentToken) {
-                            console.log(currentToken);
-                            // sendTokenToServer(currentToken);
-                            // updateUIForPushEnabled(currentToken);
-                        }else{
-                            // show permission request
-                            console.log('No Instance ID token available. Request permission to genreate on.');
-                            // show permission UI
-                            // updateUIForPushPermissionRequired();
-                            setTokenSentToServer(false);
+                          saveToken(currentToken);
+                          console.log(currentToken);
+                          setTokenSentToServer(true);
+                        } else {
+                          console.log('No Instance ID token available. Request permission to generate one.');
+                          setTokenSentToServer(false);
                         }
-                    })
-                    .catch(function(err)){
-                        console.log(err);
-                        showToken(err);
+                      })
+                      .catch(function(err) {
+                        console.log('An error occurred while retrieving token. ', err);
                         setTokenSentToServer(false);
-                    }
+                      });
                 }
 
-                function sendTokenToServer(sent){
+                function setTokenSentToServer(sent) {
                     window.localStorage.setItem('sentToServer', sent ? 1 : 0);
                 }
+
+                // function isTokenSentToServer() {
+                //     return window.localStorage.getItem('sentToServer') == 1;
+                // }
             })
         });
         </script>
