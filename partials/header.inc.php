@@ -99,25 +99,27 @@
                 const messaging = firebase.messaging();
                 messaging.requestPermission()
                     .then(function () {
-                        alert("Notification permission granted." );
+                        alert("Notification permission granted.");
                         console.log("Notification permission granted.");
+                        getRegToken();
                     })
                     .catch(function (err) {
                         alert(err);
-                        console.log("Unable to get permission to notify.", err);
+                        console.log(err);
                     });
 
                 function getRegToken(argument) {
                     messaging.getToken()
                     .then(function(currentToken) {
                         if (currentToken) {
-                            sendTokenToServer(currentToken);
-                            updateUIForPushEnabled(currentToken);
+                            console.log(currentToken);
+                            // sendTokenToServer(currentToken);
+                            // updateUIForPushEnabled(currentToken);
                         }else{
                             // show permission request
                             console.log('No Instance ID token available. Request permission to genreate on.');
                             // show permission UI
-                            updateUIForPushPermissionRequired();
+                            // updateUIForPushPermissionRequired();
                             setTokenSentToServer(false);
                         }
                     })
