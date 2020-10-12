@@ -101,11 +101,38 @@
                     .then(function () {
                         alert("Notification permission granted." );
                         console.log("Notification permission granted.");
+                        getRegToken();
                     })
                     .catch(function (err) {
                         alert(err);
                         console.log("Unable to get permission to notify.", err);
                     });
+
+                function getRegToken(argument) {
+                    messaging.getToken()
+                    .then(function(currentToken) {
+                        if (currentToken) {
+                            console.log(currentToken);
+                            // sendTokenToServer(currentToken);
+                            // updateUIForPushEnabled(currentToken);
+                        }else{
+                            // show permission request
+                            console.log('No Instance ID token available. Request permission to genreate on.');
+                            // show permission UI
+                            // updateUIForPushPermissionRequired();
+                            setTokenSentToServer(false);
+                        }
+                    })
+                    .catch(function(err)){
+                        console.log("An error occured while retrieving token.", err);
+                        showToken("Error retrieving instance ID token.", err);
+                        setTokenSentToServer(false);
+                    }
+                }
+
+                function sendTokenToServer(sent){
+                    window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+                }
             })
         });
         </script>
