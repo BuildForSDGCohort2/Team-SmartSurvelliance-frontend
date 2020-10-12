@@ -71,25 +71,43 @@
         <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-app.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
-             https://firebase.google.com/docs/web/setup#available-libraries -->
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+        <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-messaging.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
 
         <script>
-          // Your web app's Firebase configuration
-          // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-          var firebaseConfig = {
-            apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
-            authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
-            databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
-            projectId: "smart-surveillance-1eaf6",
-            storageBucket: "smart-surveillance-1eaf6.appspot.com",
-            messagingSenderId: "301561777685",
-            appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
-            measurementId: "G-47LRFVSMHN"
-          };
-          // Initialize Firebase
-          firebase.initializeApp(firebaseConfig);
-          firebase.analytics();
+        $(document).ready(function() {
+            // Your web app's Firebase configuration
+            // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+            var firebaseConfig = {
+                apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
+                authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
+                databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
+                projectId: "smart-surveillance-1eaf6",
+                storageBucket: "smart-surveillance-1eaf6.appspot.com",
+                messagingSenderId: "301561777685",
+                appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
+                measurementId: "G-47LRFVSMHN"
+            };
+            // Initialize Firebase
+            firebase.initializeApp(firebaseConfig);
+            firebase.analytics();
+
+            $('#notificationlabel').click('on', function(e) {
+                e.preventDefault();
+                // alert('Hey');
+                const messaging = firebase.messaging();
+                messaging.requestPermission()
+                    .then(function () {
+                        alert("Notification permission granted." );
+                        console.log("Notification permission granted.");
+                    })
+                    .catch(function (err) {
+                        alert(err);
+                        console.log("Unable to get permission to notify.", err);
+                    });
+            })
+        });
         </script>
     </head>
     <body>
@@ -209,22 +227,3 @@
                 <h4>Generate Notification with tap on Notification</h4>
                 <a href="#" id="notificationlabel" class="button">Notification</a>
             </div> -->
-
-            <script>
-                $(document).ready(function() {
-                    $('#notificationlabel').click('on', function(e) {
-                        e.preventDefault();
-                        // alert('Hey');
-                        const messaging = firebase.messaging();
-                        messaging.requestPermission()
-                            .then(function () {
-                                alert("Notification permission granted." );
-                                console.log("Notification permission granted.");
-                            })
-                            .catch(function (err) {
-                                alert(err);
-                                console.log("Unable to get permission to notify.", err);
-                            });
-                    })
-                });
-            </script>
