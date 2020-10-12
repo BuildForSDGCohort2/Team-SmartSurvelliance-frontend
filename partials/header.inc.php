@@ -215,9 +215,16 @@
                     $('#notificationlabel').click('on', function(e) {
                         e.preventDefault();
                         // alert('Hey');
-                        showNotification();
-                        // setInterval(function(){ showNotification(); }, 15000);
+                        const messaging = firebase.messaging();
+                        messaging.requestPermission()
+                            .then(function () {
+                                alert("Notification permission granted." );
+                                console.log("Notification permission granted.");
+                            })
+                            .catch(function (err) {
+                                alert(err);
+                                console.log("Unable to get permission to notify.", err);
+                            });
                     })
-                    
                 });
             </script>
