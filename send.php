@@ -31,7 +31,7 @@
 	];
 
 	$payload = [
-		'registration_ids' 	=> $registrationIds,
+		'registration_ids' 	=> $tokens,
 		'data'				=> $msg
 	];
 
