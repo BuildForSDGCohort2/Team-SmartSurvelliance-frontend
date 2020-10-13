@@ -8,8 +8,9 @@
 	// $stmt->execute();
 	// $tokens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-
 	$tokens = 'cZLSkPkml3gjya_qLA1EvT:APA91bF3vRvEQ1EbpSjkoUbQ8bTfwAE5dSYXpBBKiLXvhg1avym514593GGzK46yx_kiL7I9b15Ir4iaCJmx0UqNbEiiCes8YLPerOnLwU-gZJ7dSS7k8i7HaRk7rxyRBd2tjd4ciCdo';
+
+	$tokens = array('token' => $tokens);
 
 	foreach ($tokens as $token) {
 		$registrationIds[] = $token['token'];
