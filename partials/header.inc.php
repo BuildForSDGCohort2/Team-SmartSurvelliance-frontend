@@ -1,6 +1,7 @@
 <?php session_start();
     require_once 'functions.inc.php';
     require './vendor/autoload.php';
+    $config = require './config/config.php';
 
     if (!isset($_SESSION['user_email'])) {
         header("Location: https://kingso101-smart-home-demo.auth.us-east-1.amazoncognito.com/login?client_id=73nkbeiki4s2q5c2v9v8ek4aue&response_type=token&scope=aws.cognito.signin.user.admin+email+openid+phone+profile&redirect_uri=https://smart-surveillance-web-app.herokuapp.com/process.php");
@@ -80,14 +81,14 @@
             // Your web app's Firebase configuration
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             var firebaseConfig = {
-                apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
-                authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
-                databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
-                projectId: "smart-surveillance-1eaf6",
-                storageBucket: "smart-surveillance-1eaf6.appspot.com",
-                messagingSenderId: "301561777685",
-                appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
-                measurementId: "G-47LRFVSMHN"
+                apiKey: $config['firebase']['API_KEY'],
+                authDomain: $config['firebase']['AUTH_DOMAIN'],
+                databaseURL: $config['firebase']['DATABASE_URL'],
+                projectId: $config['firebase']['PROJECT_ID'],
+                storageBucket: $config['firebase']['STORAGE_BUCKET'],
+                messagingSenderId: $config['firebase']['MESSAGING_SENDER_ID'],
+                appId: $config['firebase']['APP_ID'],
+                measurementId: $config['firebase']['MEASUREMENT_ID']
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
@@ -146,9 +147,9 @@
                 }
 
                 messaging.onMessage(function(payload) {
-                  console.log("Message received. ", payload);
-                  notificationTitle = payload.data.title;
-                  notificationOptions = {
+                    console.log("Message received. ", payload);
+                    notificationTitle = payload.data.title;
+                    notificationOptions = {
                     body: payload.data.body,
                     icon: payload.data.icon,
                     image:  payload.data.image

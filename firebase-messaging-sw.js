@@ -42,15 +42,18 @@
 // implement this optional method.
 // [START background_handler]
 messaging.setBackgroundMessageHandler(function(payload) {
-  console.log('[firebase-messaging-sw.js] Received background message ', payload);
-  // Customize notification here
-  const notificationTitle = 'ALERT! YOU HAVE AN INTRUDER';
-  const notificationOptions = {
-    body: 'You have someone at the front door.',
-    icon: 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg'
-  };
+  	console.log('[firebase-messaging-sw.js] Received background message ', payload);
+  	// Customize notification here
+  	notificationTitle = payload.data.title;
+	notificationOptions = {
+	    body: payload.data.body,
+	    icon: payload.data.icon,
+	    image:  payload.data.image
+	};
 
-  return self.registration.showNotification(notificationTitle,
-    notificationOptions);
+  	return self.registration.showNotification(
+  		notificationTitle,
+  		notificationOptions
+  	);
 });
 // [END background_handler]
