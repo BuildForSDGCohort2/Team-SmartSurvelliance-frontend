@@ -1,66 +1,58 @@
 <?php 
-	if (isset($_GET['token'])) {
-		$url_token = $_GET['token'];
+	define('SERVER_API_KEY', 'AAAAjfN0wn4:APA91bEKcCeOfFpeNLaIgU032GFbfVVuhES_zZVuTuOxTRIajwJsHnhvccESa3WSkkhzYLg0w65D2po6iIlhwJsIQ3fBcjyz_j5CgNSJrGAR8kxd2fhxCsUcOPjp5gyDhla4oFvj_k_g');
 
-		define('SERVER_API_KEY', 'AAAAjfN0wn4:APA91bEKcCeOfFpeNLaIgU032GFbfVVuhES_zZVuTuOxTRIajwJsHnhvccESa3WSkkhzYLg0w65D2po6iIlhwJsIQ3fBcjyz_j5CgNSJrGAR8kxd2fhxCsUcOPjp5gyDhla4oFvj_k_g');
+	// require 'DbConnect.php';
+	// $db = new DbConnect;
+	// $conn = $db->connect();
+	// $stmt = $conn->prepare('SELECT * FROM tokens');
+	// $stmt->execute();
+	// $tokens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-		// require 'DbConnect.php';
-		// $db = new DbConnect;
-		// $conn = $db->connect();
-		// $stmt = $conn->prepare('SELECT * FROM tokens');
-		// $stmt->execute();
-		// $tokens = $stmt->fetchAll(PDO::FETCH_ASSOC);
+	// $tokens = 'cZLSkPkml3gjya_qLA1EvT:APA91bF3vRvEQ1EbpSjkoUbQ8bTfwAE5dSYXpBBKiLXvhg1avym514593GGzK46yx_kiL7I9b15Ir4iaCJmx0UqNbEiiCes8YLPerOnLwU-gZJ7dSS7k8i7HaRk7rxyRBd2tjd4ciCdo';
 
-		// $tokens = 'cZLSkPkml3gjya_qLA1EvT:APA91bF3vRvEQ1EbpSjkoUbQ8bTfwAE5dSYXpBBKiLXvhg1avym514593GGzK46yx_kiL7I9b15Ir4iaCJmx0UqNbEiiCes8YLPerOnLwU-gZJ7dSS7k8i7HaRk7rxyRBd2tjd4ciCdo';
+	// $tokens = array('token' => $tokens);
 
-		// $tokens = array('token' => $tokens);
+	// foreach ($tokens as $token) {
+	// 	$registrationIds[] = $token['token'];
+	// }
 
-		// foreach ($tokens as $token) {
-		// 	$registrationIds[] = $token['token'];
-		// }
+	$tokens = '{"cZLSkPkml3gjya_qLA1EvT:APA91bE_kaZ5_I2tY8PU-NSMUCowLFqacUaDQVpgQwwzXfBseOYsWl3tj1Q6IEVilJ3ZYodNe7H9senoqd2oOOLNgzZvDHeMErOU8a1uy9-OyjeKG63oRcQMufF9ZPzY2GJvsaww7Yy2"}';
+	
+	$header = [
+		'Authorization: Key=' . SERVER_API_KEY,
+		'Content-Type: Application/json'
+	];
 
-		$tokens = '{"'.$url_token.'"}';
-		{"aws/aws-sdk-php": "^3.158"}
-		
-		$header = [
-			'Authorization: Key=' . SERVER_API_KEY,
-			'Content-Type: Application/json'
-		];
+	$msg = [
+		'title' => 'ALERT! YOU HAVE AN INTRUDER',
+		'body' => 'You have someone at the front door.',
+		'icon' => 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg',
+		'image' => 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg',
+	];
 
-		$msg = [
-			'title' => 'ALERT! YOU HAVE AN INTRUDER',
-			'body' => 'You have someone at the front door.',
-			'icon' => 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg',
-			'image' => 'https://smart-surveillance-web-app.herokuapp.com/assets/images/logo.jpg',
-		];
+	$payload = [
+		'to' 	=> $tokens,
+		'data'				=> $msg
+	];
 
-		$payload = [
-			'to' 	=> $tokens,
-			'data'				=> $msg
-		];
+	$curl = curl_init();
 
-		$curl = curl_init();
+	curl_setopt_array($curl, array(
+	  CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
+	  CURLOPT_RETURNTRANSFER => true,
+	  CURLOPT_CUSTOMREQUEST => "POST",
+	  CURLOPT_POSTFIELDS => json_encode( $payload ),
+	  CURLOPT_HTTPHEADER => $header
+	));
 
-		curl_setopt_array($curl, array(
-		  CURLOPT_URL => "https://fcm.googleapis.com/fcm/send",
-		  CURLOPT_RETURNTRANSFER => true,
-		  CURLOPT_CUSTOMREQUEST => "POST",
-		  CURLOPT_POSTFIELDS => json_encode( $payload ),
-		  CURLOPT_HTTPHEADER => $header
-		));
+	$response = curl_exec($curl);
+	$err = curl_error($curl);
 
-		$response = curl_exec($curl);
-		$err = curl_error($curl);
+	curl_close($curl);
 
-		curl_close($curl);
-
-		if ($err) {
-		  echo "cURL Error #:" . $err;
-		} else {
-		  echo $response;
-		}
+	if ($err) {
+	  echo "cURL Error #:" . $err;
 	} else {
-		echo "Token is missing.";
+	  echo $response;
 	}
-
  ?>
