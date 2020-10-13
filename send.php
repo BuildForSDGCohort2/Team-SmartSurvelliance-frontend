@@ -16,7 +16,7 @@
 	// 	$registrationIds[] = $token['token'];
 	// }
 
-	$tokens = '[{"cZLSkPkml3gjya_qLA1EvT:APA91bE_kaZ5_I2tY8PU-NSMUCowLFqacUaDQVpgQwwzXfBseOYsWl3tj1Q6IEVilJ3ZYodNe7H9senoqd2oOOLNgzZvDHeMErOU8a1uy9-OyjeKG63oRcQMufF9ZPzY2GJvsaww7Yy2"}]';
+	$tokens = '[{"token":"cZLSkPkml3gjya_qLA1EvT:APA91bE_kaZ5_I2tY8PU-NSMUCowLFqacUaDQVpgQwwzXfBseOYsWl3tj1Q6IEVilJ3ZYodNe7H9senoqd2oOOLNgzZvDHeMErOU8a1uy9-OyjeKG63oRcQMufF9ZPzY2GJvsaww7Yy2"}]';
 	
 	$header = [
 		'Authorization: Key=' . SERVER_API_KEY,
