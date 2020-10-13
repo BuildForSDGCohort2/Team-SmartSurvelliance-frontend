@@ -39,7 +39,7 @@
     curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($fields));
     $result = curl_exec($ch);
     if ($result === FALSE) {
-        die('FCM Send Error: ' . curl_error($ch));
+    	echo "cURL Error #:" . curl_error($ch));
     }else {
 	  echo $result;
 	}
