@@ -18,7 +18,7 @@
 	$registrationIds = 'cZLSkPkml3gjya_qLA1EvT:APA91bH-IQnnUlX7Neb6faoBNFjvYzbXLqH0uQT_puLQx1czwe7kWLO6qFkGRK7si1ZDOoAurqDNXdmwT9NFJupAxBuJTjJfTNANHCWI61uAf7yJ6rUOXcL0zz2GllFbznwpDfFopoXe';
 	
 	$header = [
-		'Authorization: Key=' . SERVER_API_KEY,
+		'Authorization: Key=AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE',
 		'Content-Type: Application/json'
 	];
 
