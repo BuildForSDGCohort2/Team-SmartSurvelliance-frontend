@@ -144,7 +144,7 @@
                     //     console.log(result);
                     // })
                     console.log("Token saved to database.");
-                    TokenElem.innerHTML = "token is : " + token
+                    TokenElem.innerHTML = "token is : " + currentToken
                 }
 
                 messaging.onMessage(function(payload) {
