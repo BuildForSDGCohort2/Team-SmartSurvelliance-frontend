@@ -31,7 +31,7 @@
 	];
 
 	$payload = [
-		'to' 	=> $tokens,
+		'registration_ids' 	=> $tokens,
 		'data'				=> $msg
 	];
 
