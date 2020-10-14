@@ -8,15 +8,15 @@
 	// $stmt->execute();
 	// $tokens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-	$tokens = 'cZLSkPkml3gjya_qLA1EvT:APA91bE_kaZ5_I2tY8PU-NSMUCowLFqacUaDQVpgQwwzXfBseOYsWl3tj1Q6IEVilJ3ZYodNe7H9senoqd2oOOLNgzZvDHeMErOU8a1uy9-OyjeKG63oRcQMufF9ZPzY2GJvsaww7Yy2';
+	// $tokens = 'cZLSkPkml3gjya_qLA1EvT:APA91bE_kaZ5_I2tY8PU-NSMUCowLFqacUaDQVpgQwwzXfBseOYsWl3tj1Q6IEVilJ3ZYodNe7H9senoqd2oOOLNgzZvDHeMErOU8a1uy9-OyjeKG63oRcQMufF9ZPzY2GJvsaww7Yy2';
 
-	$tokens = array('token' => $tokens);
+	// $tokens = array('token' => $tokens);
 
-	foreach ($tokens as $token) {
-		$registrationIds[] = $token['token'];
-	}
+	// foreach ($tokens as $token) {
+	// 	$registrationIds[] = $token['token'];
+	// }
 
-	// $tokens = ['cCLA1_8Inic:APA91bGhuCksjWEETYWVOh04scsZInxdWmXekEr5F9-1zJuTDZDw3It_tNmpA__PmoxDTISZzplD_ciXvsuw2pMtYSzdfIUAUfcTLnghvJS0CVkYW9sVx2HnF1rqnxsFgSdYmcXpHKLs'];
+	$tokens = ['cZLSkPkml3gjya_qLA1EvT:APA91bFwKhRKe1F_315pP2fJIHb6-pe5KEZlWtvOtS4bcWOBejgSOhWQvmVZHMAff8wnEOo6EMrg3wI_Cfd4jy34trzPBSeOcdS_Dq-ZbXd8xsuZKbRbHmiv3QFg5AKdUjTyhEx3yOOH'];
 	
 	$header = [
 		'Authorization: Key=' . SERVER_API_KEY,
@@ -31,7 +31,7 @@
 	];
 
 	$payload = [
-		'registration_ids' 	=> $registrationIds,
+		'registration_ids' 	=> $tokens,
 		'data'				=> $msg
 	];
 
