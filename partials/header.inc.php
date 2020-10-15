@@ -74,6 +74,7 @@
         https://firebase.google.com/docs/web/setup#available-libraries -->
         <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-messaging.js"></script>
         <script src="https://www.gstatic.com/firebasejs/7.23.0/firebase-analytics.js"></script>
+        <link rel="manifest" href="manifest.json">
 
         <script>
         $(document).ready(function() {
