@@ -2,8 +2,8 @@
 
 return [
 	's3' => [
-		'KEY' => 'AKIATBV3IPRIOGEBEMYR',
-		'SECRET' => '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',
+		'KEY' => 'AKIATBV3IPRIMW7QIUPG,OAz',
+		'SECRET' => 'b57ImT2yIfXkVWTA+uicOO8t2hDs4UIaJd5c',
 		'BUCKET' => 'demo-video-stream',
 		'REGION' => 'us-west-2',
 		'VERSION' => 'latest'
@@ -17,6 +17,7 @@ return [
 		'CLIENT_NAME' => 'demo-client',
 		'POOL_ID' =>  'us-east-1_yXMlljTfq',
 		'CLIENT_ID' => '73nkbeiki4s2q5c2v9v8ek4aue',
+		'REGION' => 'us-east-1',
 		'VERSION' => 'latest'
 	],
 	'firebase' =>[
