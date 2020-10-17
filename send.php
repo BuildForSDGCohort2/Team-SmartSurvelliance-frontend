@@ -1,5 +1,5 @@
 <?php 
-	define('SERVER_API_KEY', 'AAAARjZ7jhU:APA91bFkHbhG5rChfxO0gt9gWfRk57PT0LJ659Yp9rBMC2u4kGrBEN_rnvau_PMu3kh-wvHO0OxQoX_Pa4JxqWNkiG3trsQ_7IIFjV3nhFIwULd3jHUQkQsLO0jTOZmn0zHx6rii6DqP');
+	define('SERVER_API_KEY', 'SERVER_KEY');
 
 	// require 'DbConnect.php';
 	// $db = new DbConnect;
@@ -9,7 +9,7 @@
 	// $tokens = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
 	$tokens = [
-	    "token" => "cZLSkPkml3gjya_qLA1EvT:APA91bEtC_FeiffmDbz94uKdG2cd3XIWlkKDURqE9paG0MPLWlJT14Z_xC2-psbWj7Q0HLa9az6Zz39jgGjRR_wxbKW6TpIOkDQHCUAFQOCQHxIen_xsFTiObDyctGpCIg_GCUg_yO5V"
+	    "token" => "token"
 	];
 
 	$tokens = array('token' => $tokens);

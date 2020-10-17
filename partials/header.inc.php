@@ -81,14 +81,14 @@
             // Your web app's Firebase configuration
             // For Firebase JS SDK v7.20.0 and later, measurementId is optional
             var firebaseConfig = {
-                apiKey: "AIzaSyB3YnQ2WaEQWGspxexCKSBc-1dF4kX7lQE",
-                authDomain: "smart-surveillance-1eaf6.firebaseapp.com",
-                databaseURL: "https://smart-surveillance-1eaf6.firebaseio.com",
-                projectId: "smart-surveillance-1eaf6",
-                storageBucket: "smart-surveillance-1eaf6.appspot.com",
-                messagingSenderId: "301561777685",
-                appId: "1:301561777685:web:ea02d8076f1a6a5de7081c",
-                measurementId: "G-47LRFVSMHN"
+                apiKey: "API_KEY",
+    authDomain: "AUTH_DOMAIN",
+    databaseURL: "DB_URL",
+    projectId: "PROJECT_ID",
+    storageBucket: "STORAGE_BUCKET",
+    messagingSenderId: "SENDER_ID",
+    appId: "APP_ID",
+    measurementId: "MEASURENT_ID",
             };
             // Initialize Firebase
             firebase.initializeApp(firebaseConfig);
