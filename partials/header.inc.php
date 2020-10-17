@@ -97,68 +97,69 @@
             $("#permission").change(function(e) {
                 e.preventDefault();
                 if(this.checked) {
-                    alert('Hey');
+                    // alert('Hey');
+                    const messaging = firebase.messaging();
+                    messaging.requestPermission()
+                        .then(function () {
+                            alert("Notification permission granted.");
+                            console.log("Notification permission granted.");
+                            getRegToken();
+                        })
+                        .catch(function (err) {
+                            alert(err);
+                            console.log("Unable to get permission to notify.", err);
+                        });
+
+                    function getRegToken(argument) {
+                        messaging.getToken()
+                          .then(function(currentToken) {
+                            if (currentToken) {
+                              saveToken(currentToken);
+                              console.log(currentToken);
+                              setTokenSentToServer(true);
+                            } else {
+                              console.log('No Instance ID token available. Request permission to generate one.');
+                              setTokenSentToServer(false);
+                            }
+                          })
+                          .catch(function(err) {
+                            console.log('An error occurred while retrieving token. ', err);
+                            setTokenSentToServer(false);
+                          });
+                    }
+
+                    function setTokenSentToServer(sent) {
+                        window.localStorage.setItem('sentToServer', sent ? 1 : 0);
+                    }
+
+                    function isTokenSentToServer() {
+                        return window.localStorage.getItem('sentToServer') == 1;
+                    }
+
+                    function saveToken(currentToken) {
+                        // $.ajax({
+                        //     url: 'action.php',
+                        //     method: 'post',
+                        //     data: 'token=' + currentToken
+                        // }).done(function(result){
+                        //     console.log(result);
+                        // })
+                        console.log("Token saved to database.");
+                    }
+
+                    messaging.onMessage(function(payload) {
+                        console.log("Message received. ", payload);
+                        notificationTitle = payload.data.title;
+                        notificationOptions = {
+                        body: payload.data.body,
+                        icon: payload.data.icon,
+                        image:  payload.data.image
+                      };
+                      var notification = new Notification(notificationTitle,notificationOptions);
+                    });
+                }else{
+                    alert('No longer subscribed.')
                 }
-                
-                // const messaging = firebase.messaging();
-                // messaging.requestPermission()
-                //     .then(function () {
-                //         alert("Notification permission granted.");
-                //         console.log("Notification permission granted.");
-                //         getRegToken();
-                //     })
-                //     .catch(function (err) {
-                //         alert(err);
-                //         console.log("Unable to get permission to notify.", err);
-                //     });
-
-                // function getRegToken(argument) {
-                //     messaging.getToken()
-                //       .then(function(currentToken) {
-                //         if (currentToken) {
-                //           saveToken(currentToken);
-                //           console.log(currentToken);
-                //           setTokenSentToServer(true);
-                //         } else {
-                //           console.log('No Instance ID token available. Request permission to generate one.');
-                //           setTokenSentToServer(false);
-                //         }
-                //       })
-                //       .catch(function(err) {
-                //         console.log('An error occurred while retrieving token. ', err);
-                //         setTokenSentToServer(false);
-                //       });
-                // }
-
-                // function setTokenSentToServer(sent) {
-                //     window.localStorage.setItem('sentToServer', sent ? 1 : 0);
-                // }
-
-                // function isTokenSentToServer() {
-                //     return window.localStorage.getItem('sentToServer') == 1;
-                // }
-
-                // function saveToken(currentToken) {
-                //     // $.ajax({
-                //     //     url: 'action.php',
-                //     //     method: 'post',
-                //     //     data: 'token=' + currentToken
-                //     // }).done(function(result){
-                //     //     console.log(result);
-                //     // })
-                //     console.log("Token saved to database.");
-                // }
-
-                // messaging.onMessage(function(payload) {
-                //     console.log("Message received. ", payload);
-                //     notificationTitle = payload.data.title;
-                //     notificationOptions = {
-                //     body: payload.data.body,
-                //     icon: payload.data.icon,
-                //     image:  payload.data.image
-                //   };
-                //   var notification = new Notification(notificationTitle,notificationOptions);
-                // });
             })
         });
         </script>
