@@ -10,7 +10,6 @@
                 <button id="notificationlabel" type="button" class="btn btn-primary" >
                     Show Notification
                 </button>
-                <div id="token"></div>
                 <ul class="ul">
                   <li><a target="_blank" title="Goto Support@hberecords.com Webmail" href="https://server.dktlds.com:2096/cpsess8642207488/3rdparty/roundcube/?_task=mail&_mbox=INBOX"><i class="fa fa-cube" aria-hidden="true"></i></a></li>
                 </ul>
