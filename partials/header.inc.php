@@ -98,7 +98,6 @@
                 e.preventDefault();
                 // alert('Hey');
                 const messaging = firebase.messaging();
-                TokenElem = document.getElementById("token");
                 messaging.requestPermission()
                     .then(function () {
                         alert("Notification permission granted.");
@@ -145,7 +144,6 @@
                     //     console.log(result);
                     // })
                     console.log("Token saved to database.");
-                    TokenElem.innerHTML = "token is : " + currentToken
                 }
 
                 messaging.onMessage(function(payload) {
