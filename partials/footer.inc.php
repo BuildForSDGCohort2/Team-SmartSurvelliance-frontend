@@ -30,28 +30,6 @@
         <!-- AdminLTE for demo purposes -->
         <script src="assets/dist/js/demo.js"></script>
         <script src="assets/js/utilities.js"></script>
-        <script src="assets/js/admin/add-admin.js"></script>
-        <script src="assets/js/artist/add-artist.js"></script>
-        <!-- <script src="assets/js/artist/read-artist.js"></script> -->
-        <!-- <script src="assets/js/artist/artist.js"></script> -->
-        <script src="assets/js/artist/delete-artist.js"></script>
-        <script src="assets/js/artist/read-one.js"></script>
-        <script src="assets/js/artist/update.js"></script>
-        <!-- <script src="assets/js/genre/add-genre.js"></script> -->
-        <!-- <script src="assets/js/genre/genre.js"></script> -->
-        <script src="assets/js/genre/delete-genre.js"></script>
-        <script src="assets/js/admin/read-one.js"></script>
-        <script src="assets/js/admin/delete-admin.js"></script>
-        <script src="assets/js/admin/update.js"></script>
-        <script src="assets/js/event/read-one.js"></script>
-        <script src="assets/js/event/update.js"></script>
-        <script src="assets/js/event/delete-event.js"></script>
-        <script src="assets/js/banner/read-one.js"></script>
-        <script src="assets/js/banner/update.js"></script>
-        <script src="assets/js/banner/delete-banner.js"></script>
-        <script src="assets/js/release/read-one.js"></script>
-        <script src="assets/js/release/update.js"></script>
-        <script src="assets/js/release/delete-release.js"></script>
 
         <script type="text/javascript">
             $(document).ready(function() {
